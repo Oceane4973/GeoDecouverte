@@ -2,7 +2,6 @@ const express = require('express')
 
 const API = express()
 
-
 API.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Credentials', 'true')
@@ -13,9 +12,13 @@ API.use((req, res, next) => {
 })
 
 
-API.use('/images', (req, res, next)=>{
+API.get('/images', (req, res, next)=>{
     res.json({message : "hey"})
     res.status(200).json("Erreur de connexion")
+})
+
+API.listen(5000, ()=>{
+    console.log("API démarrée")
 })
 
 module.exports = API
