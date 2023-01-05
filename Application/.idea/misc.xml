@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/nl211296/Documents/NobiliL/S1/atelier technique/Atelier_technique/Application/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3095" />
+        <entry key="..\:/Users/nl211296/Documents/NobiliL/S1/atelier technique/Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3175" />
+        <entry key="..\:/Users/nl211296/Documents/NobiliL/S1/atelier technique/Atelier_technique/Application/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3095" />
+        <entry key="..\:/Users/nl211296/Documents/NobiliL/S1/atelier technique/Atelier_technique/Application/app/src/main/res/drawable/ic_noun_arrow_2094742.xml" value="0.3175" />
+        <entry key="..\:/Users/nl211296/Documents/NobiliL/S1/atelier technique/Atelier_technique/Application/app/src/main/res/drawable/ic_noun_back_1263584.xml" value="0.3095" />
         <entry key="..\:/Users/nl211296/Documents/NobiliL/S1/atelier technique/Atelier_technique/Application/app/src/main/res/layout/activity_main.xml" value="0.2871376811594203" />
         <entry key="..\:/Users/nl211296/Documents/NobiliL/S1/atelier technique/Atelier_technique/Application/app/src/main/res/layout/saved.xml" value="0.33" />
       </map>
