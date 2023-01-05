@@ -1,0 +1,17 @@
+{
+    "version" : 1,
+    "name" : "api_atelier_technique",
+    "builds" : [
+        {
+            "src" : "ServerAPI.js", 
+            "use" : "@vercel/node"
+        }
+    ],
+    "routes" : [
+        {
+            "src" : "/(.*)", 
+            "dest" : "/API/server.js"
+        }
+    ]
+
+}
