@@ -8,13 +8,11 @@ import com.google.android.gms.maps.model.LatLng;
 
 import edu.atelier.technique.models.Location;
 
-public class MainActivity extends AppCompatActivity {
+public class HomePage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
+        setContentView(R.layout.home_page_layout);
     }
 }
