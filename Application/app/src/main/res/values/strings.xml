@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Application</string>
+    <string name="saved">Saved Posts</string>
+    <string name="placeholder">Le table layout est un placeholder en attendant le list adaptater des saved post</string>
     <string name="appName">GeoDecouverte</string>
     <string name="infoButton1">A</string>
     <string name="infoButton2">B</string>
