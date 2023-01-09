@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center_vertical"
                 android:contentDescription="TODO"
-                app:srcCompat="@drawable/ic_noun_gps_location_5392125" />
+                app:srcCompat="@drawable/ic_gps_location" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                     android:baselineAlignBottom="false"
                     android:contentDescription="TODO"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_noun_bookmark_5394409"
+                    app:srcCompat="@drawable/ic_bookmark"
                     tools:layout_editor_absoluteY="9dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
