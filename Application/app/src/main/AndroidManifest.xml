@@ -5,11 +5,16 @@
 
 <<<<<<< Updated upstream
     <uses-permission android:name="android.permission.INTERNET"/>
+<<<<<<< HEAD
 =======
     <uses-feature android:name="android.hardware.camera"
         android:required="true" />
 
 >>>>>>> Stashed changes
+=======
+    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+>>>>>>> e9f2266f1c5b947e8aaed3674e84d9f466140587
 
     <application
         android:usesCleartextTraffic="true"
