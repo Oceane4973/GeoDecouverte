@@ -8,6 +8,7 @@
     <string name="infoButton3">C</string>
     <string name="rayon">Rayon</string>
     <string name="kilometres">0km</string>
+    <string name="InfoPage_title">Informations</string>
     <string-array name="villeOuPays">
         <item>Choisir...</item>
         <item>Ville</item>
