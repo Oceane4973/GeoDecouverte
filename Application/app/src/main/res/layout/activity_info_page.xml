@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.InfoPage">
 
+    <!--TOOLBAR-->
     <ImageButton
         android:id="@+id/back"
         android:layout_width="70dp"
@@ -27,5 +28,178 @@
         app:layout_constraintTop_toTopOf="@+id/back"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"/>
+
+    <!--TEXT-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back"
+        android:layout_marginHorizontal="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <!--INTRODUCTION-->
+            <TextView
+                android:id="@+id/InfoPage_title_introduction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/InfoPage_introduction"
+                android:textStyle="italic"/>
+
+            <!--SERVICE-->
+            <TextView
+                android:id="@+id/InfoPage_title_service_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/InfoPage_service_title"
+                android:layout_marginTop="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="16dp"/>
+
+            <!--TEXT-->
+            <TextView
+                android:id="@+id/InfoPage_title_service_paragraphe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/InfoPage_service_paragraphe"/>
+
+            <!--LIST-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageView
+                    android:id="@+id/ic_list_view_1"
+                    android:layout_width="10dp"
+                    android:layout_height="22dp"
+                    app:srcCompat="@drawable/ic_baseline_circle_24"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/InfoPage_title_service_item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/InfoPage_service_item1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ic_list_view_1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="16dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageView
+                    android:id="@+id/ic_list_view_2"
+                    android:layout_width="10dp"
+                    android:layout_height="22dp"
+                    app:srcCompat="@drawable/ic_baseline_circle_24"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/InfoPage_title_service_item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/InfoPage_service_item2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ic_list_view_2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="16dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageView
+                    android:id="@+id/ic_list_view_3"
+                    android:layout_width="10dp"
+                    android:layout_height="22dp"
+                    app:srcCompat="@drawable/ic_baseline_circle_24"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/InfoPage_title_service_item3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/InfoPage_service_item3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ic_list_view_3"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="16dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--ENGAGEMENT-->
+            <TextView
+                android:id="@+id/InfoPage_engagement_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/InfoPage_engagement_title"
+                android:layout_marginTop="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="16dp"/>
+
+            <!--TEXT-->
+            <TextView
+                android:id="@+id/InfoPage_engagement_paragraphe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/InfoPage_engagement_paragraphe"/>
+
+            <!--LIST-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp">
+
+                <ImageView
+                    android:id="@+id/ic_list_view_4"
+                    android:layout_width="10dp"
+                    android:layout_height="22dp"
+                    app:srcCompat="@drawable/ic_baseline_circle_24"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/InfoPage_engagement_item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/InfoPage_engagement_item1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ic_list_view_4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="16dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

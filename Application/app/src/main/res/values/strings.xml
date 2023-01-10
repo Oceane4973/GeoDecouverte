@@ -9,6 +9,17 @@
     <string name="rayon">Rayon</string>
     <string name="kilometres">0km</string>
     <string name="InfoPage_title">Informations</string>
+    <string name="InfoPage_introduction">Les présentes Conditions d’utilisation (ou «Conditions») régissent votre utilisation de GéoDécouverte, sauf lorsque nous indiquons expressément que des conditions distinctes (et non les présentes) s’appliquent. En utilisant GéoDécouverte, vous acceptez les présentes Conditions.</string>
+    <string name="InfoPage_service_title">Le service GéoDécouverte</string>
+    <string name="InfoPage_service_paragraphe">Nous acceptons de vous fournir le Service GéoDécouverte. Le Service comprend l’ensemble des produits, des fonctionnalités, des applications, des services, des technologies et des logiciels GéoDécouverte que nous vous fournissons afin d’accomplir la vocation de GéoDécouverte : vous rapprocher des lieux que vous aimez. Le Service inclut les aspects suivants :</string>
+    <string name="InfoPage_service_item1">Offrir des opportunités personnalisées pour découvrir et partager vos lieux préférés. Chaque endroit est différent. Nous vous proposons donc différentes fonctionnalités pour vous aider à créer et à partager avec les autres membres sur GéoDécouverte.</string>
+    <string name="InfoPage_service_item2">Développer et utiliser des technologies nous permettant d’offrir constamment des services à notre communauté grandissante.</string>
+    <string name="InfoPage_service_item3">Assurer l’accès à notre Service.</string>
+    <string name="InfoPage_engagement_title">Vos engagements</string>
+    <string name="InfoPage_engagement_paragraphe">En échange de notre engagement à vous fournir le Service, nous vous demandons de prendre les engagements suivants envers nous. Dans le cadre de notre accord, vous nous accordez également les autorisations nécessaires à la fourniture du Service.</string>
+    <string name="InfoPage_engagement_item1">Nous ne revendiquons pas la propriété de votre contenu, mais vous nous en accordez une licence d’utilisation. Aucune modification n’est apportée à vos droits sur votre contenu. Nous ne revendiquons pas la propriété du contenu que vous publiez sur ou par le biais du Service et vous êtes libre de partager votre contenu avec n’importe qui, où bon vous semble. Cependant, nous avons besoin de certaines autorisations juridiques de votre part (que nous appelons une « licence ») pour fournir le Service. Lorsque vous partagez, publiez ou importez du contenu protégé par des droits de propriété intellectuelle (comme des photos ou des vidéos) sur notre Service ou en rapport avec ce dernier, vous nous accordez une licence non exclusive, gratuite, transférable, sous-licenciable et mondiale pour héberger, utiliser, distribuer, modifier, exécuter, copier, diffuser ou afficher publiquement, traduire et créer des œuvres dérivées de votre contenu (conformément à vos paramètres de confidentialité et d’application). La licence prend fin lorsque votre contenu est supprimé de nos systèmes.</string>
+
+
     <string-array name="villeOuPays">
         <item>Choisir...</item>
         <item>Ville</item>
