@@ -12,16 +12,21 @@ import android.util.Log;
 import com.google.android.gms.maps.model.LatLng;
 
 import edu.atelier.technique.models.Location;
+import edu.atelier.technique.models.MyAdapter;
+import edu.atelier.technique.models.Publication;
 
 public class HomePage extends AppCompatActivity {
+
+    ListView simpleList;
+    ArrayList<Publication> listOfPublication = new ArrayList<Publication>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_layout);
 
-        ArrayList<String> listOfPublication = new ArrayList<String>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(HomePage.this,android.R.layout.simple_list_item_1, listOfPublication);
-        ((ListView)findViewById(R.id.listView)).setAdapter(adapter);
+        simpleList = (ListView) findViewById(R.id.listView);
+
+        MyAdapter myAdapter = new MyAdapter(this, R.layout.list_view_item, listOfPublication);
     }
 }
