@@ -31,6 +31,16 @@
             android:exported="true"
             android:label="Home">
         </activity>
+        <activity
+            android:name=".ui.InterestPage"
+            android:exported="true"
+            android:label="InterestPage">
+        </activity>
+        <activity
+            android:name=".ui.InfoPage"
+            android:exported="true"
+            android:label="InfoPage">
+        </activity>
     </application>
 
 </manifest>
