@@ -7,14 +7,12 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
-import android.app.ListActivity;
 import edu.atelier.technique.models.ImageModel;
+import edu.atelier.technique.notifications.Notifications;
 import edu.atelier.technique.ui.Adapter.HomePageAdapter;
 import edu.atelier.technique.models.PublicationModel;
 import edu.atelier.technique.services.ImageAsyncService;
 import android.content.Intent;
-import android.os.Bundle;
-
 import edu.atelier.technique.singletons.ListOfPublications;
 import edu.atelier.technique.ui.InfoPage;
 import edu.atelier.technique.ui.InterestPage;

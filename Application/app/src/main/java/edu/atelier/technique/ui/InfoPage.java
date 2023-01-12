@@ -1,11 +1,7 @@
 package edu.atelier.technique.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import edu.atelier.technique.HomePage;
 import edu.atelier.technique.R;
 
 public class InfoPage extends AppCompatActivity {
@@ -18,7 +14,5 @@ public class InfoPage extends AppCompatActivity {
         this.findViewById(R.id.back).setOnClickListener(click -> {
             super.onBackPressed();
         });
-
-
     }
 }

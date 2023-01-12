@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.util.Log;
 
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 import org.json.JSONArray;
@@ -26,6 +27,7 @@ import java.util.NavigableMap;
 
 import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.models.PublicationModel;
+import edu.atelier.technique.notifications.Notifications;
 
 /** EXEMPLE D'APPEL :
  ListOfPublications.getInstance().getList();
@@ -122,5 +124,4 @@ public class ListOfPublications {
         }
         return publications;
     }
-
 }

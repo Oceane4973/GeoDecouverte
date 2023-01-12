@@ -1,5 +1,7 @@
 package edu.atelier.technique.models;
 
+import android.Manifest;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,11 +30,11 @@ public class ImageModel {
         return country;
     }
 
-    public String gettUrl() {
+    public String getUrl() {
         return url;
     }
 
-    public String gettDate() {
+    public String getDate() {
         return date;
     }
 
