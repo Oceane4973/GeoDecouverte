@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_noun_back_1263584"
         android:layout_marginTop="20dp"/>
-
     <TextView
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
@@ -200,6 +199,5 @@
 
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
