@@ -1,4 +1,4 @@
-package edu.atelier.technique.ui;
+package edu.atelier.technique.ui.Pages;
 
 import static edu.atelier.technique.notifications.Notifications.CHANNEL_1_ID;
 

@@ -9,6 +9,7 @@ public class ImageModel {
 
     private int id;
     public String city, country, url, date;
+    public int image;
 
     public ImageModel(int id, String city, String country, String url, String date) {
         this.id = id;
