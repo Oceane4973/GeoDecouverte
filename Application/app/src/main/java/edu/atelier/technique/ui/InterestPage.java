@@ -18,7 +18,7 @@ public class InterestPage extends AppCompatActivity {
         getSupportActionBar().hide();
 
         this.findViewById(R.id.back).setOnClickListener(click -> {
-            startActivity(new Intent(getApplicationContext(), HomePage.class));
+            super.onBackPressed();
         });
     }
 }
