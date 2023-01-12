@@ -11,20 +11,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Executors;
 
-import edu.atelier.technique.HomePage;
 import edu.atelier.technique.R;
 import edu.atelier.technique.models.PublicationModel;
 import edu.atelier.technique.services.ImageAsyncService;
 
-public class HomePageAdapter extends ArrayAdapter {
+public class InterestPageAdapter extends ArrayAdapter {
 
     ArrayList<PublicationModel> publicationList = new ArrayList<>();
     Activity activity;
 
-    public HomePageAdapter(Context context, int resource, ArrayList<PublicationModel> objects, Activity activity) {
+    public InterestPageAdapter(Context context, int resource, ArrayList<PublicationModel> objects, Activity activity) {
         super(context, resource, objects);
         publicationList = objects;
         this.activity = activity;
@@ -42,15 +40,12 @@ public class HomePageAdapter extends ArrayAdapter {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        v = inflater.inflate(R.layout.post, null);
+        v = inflater.inflate(R.layout.grid_item, null);
 
-        TextView city_name = (TextView) v.findViewById(R.id.city_name);
-        TextView country_name = (TextView) v.findViewById(R.id.country_name);
-        ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
+        TextView city_name = (TextView) v.findViewById(R.id.gridText);
+        ImageView imageView = (ImageView) v.findViewById(R.id.gridImage);
 
         city_name.setText(publicationList.get(position).getImage().getCity());
-        country_name.setText(publicationList.get(position).getImage().getCountry());
-
 
         ImageAsyncService getImage = new ImageAsyncService(publicationList.get(position).getImage().getUrl());
 

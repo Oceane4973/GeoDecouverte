@@ -1,4 +1,4 @@
-package edu.atelier.technique.ui;
+package edu.atelier.technique.ui.Pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
