@@ -17,4 +17,8 @@ public class PublicationModel {
     public boolean isFavoris(){
         return isFavoris;
     }
+
+    public String toJsonString(){
+        return myImage.toJsonString();
+    }
 }

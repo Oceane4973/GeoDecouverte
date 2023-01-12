@@ -2,9 +2,11 @@ package edu.atelier.technique;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import edu.atelier.technique.singletons.ListOfPublications;
 import edu.atelier.technique.ui.InfoPage;
 import edu.atelier.technique.ui.InterestPage;
 
@@ -24,5 +26,8 @@ public class HomePage extends AppCompatActivity {
         this.findViewById(R.id.imageButton1).setOnClickListener(click -> {
             startActivity(new Intent(getApplicationContext(), InfoPage.class));
         });
+
+        //ListOfPublications.getInstance().saveNewInstance(this);
+        //ListOfPublications.getInstance().loadOldInstance(this);
     }
 }

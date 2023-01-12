@@ -12,4 +12,13 @@ public class ImageModel {
         this.url = url;
         this.date = date;
     }
+
+    public String toJsonString(){
+        return (" { \"id\" : " + id + "\n" +
+                " \"city\" : " + city + "\n" +
+                " \"country\" : " + country + "\n" +
+                " \"url\" : " + url + "\n" +
+                " \"date\" : " + date + " } \n"
+        );
+    }
 }
