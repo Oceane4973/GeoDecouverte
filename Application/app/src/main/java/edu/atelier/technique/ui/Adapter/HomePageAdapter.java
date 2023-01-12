@@ -35,12 +35,14 @@ public class HomePageAdapter extends ArrayAdapter {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        v = inflater.inflate(R.layout.list_view_item, null);
+        v = inflater.inflate(R.layout.post, null);
 
         TextView city_name = (TextView) v.findViewById(R.id.city_name);
+        TextView country_name = (TextView) v.findViewById(R.id.country_name);
         ImageView imageView = (ImageView) v.findViewById(R.id.image);
 
         city_name.setText(publicationList.get(position).getImage().getCity());
+        country_name.setText(publicationList.get(position).getImage().getCountry());
         //imageView.setImageResource(publicationList.get(position).getPublicationImage().getImageUrl());
 
         return v;
