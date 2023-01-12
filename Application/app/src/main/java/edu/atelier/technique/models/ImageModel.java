@@ -5,7 +5,7 @@ public class ImageModel {
     private int id;
     public String city, country, url, date;
 
-    public ImageModel(int id, String city, String country, String url, String date){
+    public ImageModel(int id, String city, String country, String url, String date) {
         this.id = id;
         this.city = city;
         this.country = country;
@@ -13,23 +13,31 @@ public class ImageModel {
         this.date = date;
     }
 
-    public int getId(){
+    public String toJsonString() {
+        return (" { \"id\" : " + id + "\n" +
+                " \"city\" : " + city + "\n" +
+                " \"country\" : " + country + "\n" +
+                " \"url\" : " + url + "\n" +
+                " \"date\" : " + date + " } \n");
+    }
+
+    public int getId() {
         return id;
     }
 
-    public String getCity(){
+    public String getCity() {
         return city;
     }
 
-    public String getCountry(){
+    public String getCountry() {
         return country;
     }
 
-    public String gettUrl(){
+    public String gettUrl() {
         return url;
     }
 
-    public String gettDate(){
+    public String gettDate() {
         return date;
     }
 }

@@ -5,16 +5,20 @@ public class PublicationModel {
     private ImageModel myImage;
     private boolean isFavoris;
 
-    public PublicationModel(ImageModel _myImage){
+    public PublicationModel(ImageModel _myImage) {
         this.myImage = _myImage;
         this.isFavoris = false;
     }
 
-    public ImageModel getImage(){
+    public ImageModel getImage() {
         return myImage;
     }
 
-    public boolean isFavoris(){
+    public boolean isFavoris() {
         return isFavoris;
+    }
+
+    public String toJsonString() {
+        return myImage.toJsonString();
     }
 }

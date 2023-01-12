@@ -14,7 +14,7 @@
         android:background="@color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_noun_back_1263584"
+        app:srcCompat="@drawable/ic_arrow_to_left_smooth"
         android:layout_marginTop="20dp"/>
     <TextView
         android:id="@+id/app_name"
