@@ -1,4 +1,4 @@
-package edu.atelier.technique.models;
+package edu.atelier.technique.singletons;
 
 import android.Manifest;
 import android.content.Context;
