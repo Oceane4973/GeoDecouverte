@@ -59,11 +59,11 @@ public class HomePage extends AppCompatActivity {
         simpleList.setAdapter(myAdapter);
         getSupportActionBar().hide();
 
-        this.findViewById(R.id.imageButton2).setOnClickListener(click -> {
+        this.findViewById(R.id.imageButtonBookMark).setOnClickListener(click -> {
             startActivity(new Intent(getApplicationContext(), InterestPage.class));
         });
 
-        this.findViewById(R.id.imageButton1).setOnClickListener(click -> {
+        this.findViewById(R.id.imageButtonInformations).setOnClickListener(click -> {
             startActivity(new Intent(getApplicationContext(), InfoPage.class));
         });
     }
