@@ -1,32 +1,53 @@
 package edu.atelier.technique;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import android.os.Bundle;
-import android.util.Log;
-import com.google.android.gms.maps.model.LatLng;
+import java.util.concurrent.Executors;
 
-import edu.atelier.technique.models.Location;
-import edu.atelier.technique.models.MyAdapter;
-import edu.atelier.technique.models.Publication;
+import edu.atelier.technique.models.ImageModel;
+import edu.atelier.technique.ui.Adapter.HomePageAdapter;
+import edu.atelier.technique.models.PublicationModel;
+import edu.atelier.technique.services.ImageAsyncService;
 
 public class HomePage extends AppCompatActivity {
 
-    ListView simpleList;
-    ArrayList<Publication> listOfPublication = new ArrayList<Publication>();
+    private ListView simpleList;
+    private ArrayList<PublicationModel> publicationList = new ArrayList<PublicationModel>();
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_layout);
 
-        simpleList = (ListView) findViewById(R.id.listView);
+        executeInThread();
+    }
 
-        MyAdapter myAdapter = new MyAdapter(this, R.layout.list_view_item, listOfPublication);
+    private void executeInThread(){
+        ImageAsyncService getImage = new ImageAsyncService("https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg");
+
+        Runnable runnable = ()->{
+            getImage.doInBackGround();
+            runOnUiThread( ()-> onPostExecute( getImage.getItemResult()) );
+        };
+        Executors.newSingleThreadExecutor().execute( runnable );
+    }
+
+    private void onPostExecute(Bitmap imageBitmap) {
+        this.simpleList = (ListView) findViewById(R.id.homePageListView);
+        //this.imageView.setImageBitmap(imageBitmap);
+
+        /*publicationList.add(new PublicationModel(new ImageModel(1,"Nimes","France","https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg","12/01/2023")));
+        publicationList.add(new PublicationModel(new ImageModel(2,"Nimes2","France2","https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg","12/01/2023")));
+        publicationList.add(new PublicationModel(new ImageModel(3,"Nimes3","France3","https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg","12/01/2023")));*/
+
+        HomePageAdapter myAdapter = new HomePageAdapter(this, R.layout.list_view_item, publicationList);
+        simpleList.setAdapter(myAdapter);
     }
 }
