@@ -14,6 +14,14 @@ import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.ui.Adapter.HomePageAdapter;
 import edu.atelier.technique.models.PublicationModel;
 import edu.atelier.technique.services.ImageAsyncService;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import com.google.android.gms.maps.model.LatLng;
+
+import edu.atelier.technique.models.Location;
+import edu.atelier.technique.ui.InfoPage;
+import edu.atelier.technique.ui.InterestPage;
 
 public class HomePage extends AppCompatActivity {
 
@@ -49,5 +57,14 @@ public class HomePage extends AppCompatActivity {
 
         HomePageAdapter myAdapter = new HomePageAdapter(this, R.layout.list_view_item, publicationList);
         simpleList.setAdapter(myAdapter);
+        getSupportActionBar().hide();
+
+        this.findViewById(R.id.imageButton2).setOnClickListener(click -> {
+            startActivity(new Intent(getApplicationContext(), InterestPage.class));
+        });
+
+        this.findViewById(R.id.imageButton1).setOnClickListener(click -> {
+            startActivity(new Intent(getApplicationContext(), InfoPage.class));
+        });
     }
 }
