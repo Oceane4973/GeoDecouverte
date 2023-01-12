@@ -4,13 +4,11 @@ import android.os.Bundle;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
-
 import edu.atelier.technique.models.ImageModel;
+import edu.atelier.technique.singletons.ListOfPublications;
 import edu.atelier.technique.ui.Adapter.HomePageAdapter;
 import edu.atelier.technique.models.PublicationModel;
-
 import android.content.Intent;
-
 import edu.atelier.technique.ui.Pages.InfoPage;
 import edu.atelier.technique.ui.Pages.InterestPage;
 
@@ -33,7 +31,8 @@ public class HomePage extends AppCompatActivity {
         publicationList.add(new PublicationModel(new ImageModel(3, "Nimes3", "France3",
                 "https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg", "12/01/2023")));
 
-        HomePageAdapter myAdapter = new HomePageAdapter(this.getApplicationContext(), R.layout.post, publicationList, this);
+        HomePageAdapter myAdapter = new HomePageAdapter(this.getApplicationContext(), R.layout.post, publicationList,
+                this);
         simpleList.setAdapter(myAdapter);
 
         this.findViewById(R.id.imageButtonBookMark).setOnClickListener(click -> {
@@ -44,7 +43,7 @@ public class HomePage extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), InfoPage.class));
         });
 
-        // ListOfPublications.getInstance().saveNewInstance(this);
-        // ListOfPublications.getInstance().loadOldInstance(this);
+        ListOfPublications.getInstance().writeToFile(this);
+        ListOfPublications.getInstance().readFromFile(this);
     }
 }
