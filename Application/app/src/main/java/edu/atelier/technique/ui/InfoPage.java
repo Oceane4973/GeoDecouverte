@@ -15,8 +15,6 @@ public class InfoPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_page);
 
-        getSupportActionBar().hide();
-
         this.findViewById(R.id.back).setOnClickListener(click -> {
             super.onBackPressed();
         });
