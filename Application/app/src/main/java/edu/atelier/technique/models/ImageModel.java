@@ -12,4 +12,24 @@ public class ImageModel {
         this.url = url;
         this.date = date;
     }
+
+    public int getId(){
+        return id;
+    }
+
+    public String getCity(){
+        return city;
+    }
+
+    public String getCountry(){
+        return country;
+    }
+
+    public String gettUrl(){
+        return url;
+    }
+
+    public String gettDate(){
+        return date;
+    }
 }

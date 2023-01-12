@@ -3,27 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< Updated upstream
+
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/ic_noun_gps_location_5392125.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/path_boot_animation.xml" value="0.196" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/selector_button_no.xml" value="0.259" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/selector_button_yes.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_button_NO.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_button_YES.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_button_no.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_publication_container.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_add_publication.xml" value="0.25" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_boot_animation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_info_page.xml" value="0.33" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/home_page_layout.xml" value="0.5" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/post.xml" value="0.25" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/saved.xml" value="0.36666666666666664" />
+
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3095" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.186" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3175" />
-        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3095" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.186" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.186" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_launcher_background.xml" value="0.186" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_noun_arrow_2094742.xml" value="0.3175" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_noun_back_1263584.xml" value="0.3095" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_noun_bookmark_2049134.xml" value="0.311" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_noun_bookmark_5394409.xml" value="0.311" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_noun_gps_location_5392125.xml" value="0.311" />
-        <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_main.xml" value="0.2871376811594203" />
-        <entry key="./Atelier_technique/Application/app/src/main/res/layout/post.xml" value="0.25" />
-        <entry key="./Atelier_technique/Application/app/src/main/res/layout/saved.xml" value="0.3351851851851852" />
-        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.186" />
-        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.186" />
-        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.186" />
-        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_launcher_background.xml" value="0.186" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/informations_icon.xml" value="0.186" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/marque_page_icon.xml" value="0.176" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_main.xml" value="0.264" />
-=======
+
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3095" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3175" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3095" />
@@ -37,7 +48,10 @@
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/picpic.xml" value="0.25" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/post.xml" value="0.25" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/saved.xml" value="0.3351851851851852" />
->>>>>>> Stashed changes
+
+        <entry key="./Atelier_technique/Application/app/src/main/res/layout/post.xml" value="0.25" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/layout/saved.xml" value="0.3351851851851852" />
+
       </map>
     </option>
   </component>

@@ -8,5 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
+    <color name="grey">#A69F9F9F</color>
     <color name="default_background">#FFd0fffe</color>
+    <color name="warning_text">#511212</color>
+    <color name="warning_container">#48FF5936</color>
+    <color name="blue_link">#1A5F80</color>
 </resources>

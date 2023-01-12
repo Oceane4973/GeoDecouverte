@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.AddPublicationPage">
+
+    <!--TOOLBAR-->
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:background="@color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_noun_back_1263584"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/AddPublicationPage_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="@+id/back"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"/>
+
+    <!--PUBLICATION VIEW-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_publication_container"
+        android:orientation="vertical"
+        android:paddingHorizontal="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back">
+
+        <!--IMAGE-->
+        <edu.atelier.technique.ui.CustomViewImage
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/none_image" />
+        <!--TEXT-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/ic_gps"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:srcCompat="@drawable/ic_noun_gps_location_5392125"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="Paris"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/ic_gps"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/cardview_dark_background"/>
+
+            <TextView
+                android:id="@+id/country_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="France"
+                android:textSize="12sp"
+                android:visibility="visible"
+                android:textColor="@color/cardview_dark_background"
+                app:layout_constraintStart_toEndOf="@+id/ic_gps"
+                app:layout_constraintTop_toBottomOf="@+id/city_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+
+        <!--ACTION BUTTON-->
+        <Button
+            android:id="@+id/YES"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publier"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="20dp"
+            app:useMaterialThemeColors="false"
+            app:layout_constraintTop_toTopOf="parent"
+            app:backgroundTint="@null"
+            android:background="@drawable/selector_button_yes"/>
+
+        <Button
+            android:id="@+id/NO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Annuler"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toStartOf="@+id/YES"
+            android:background="@drawable/selector_button_no"
+            android:textColor="@color/cardview_dark_background"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!--ADVERTISEMENT-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:background="@color/warning_container"
+        android:id="@+id/container_advertissement">
+
+        <TextView
+            android:id="@+id/AddPublication_avertissement_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/AddPublication_avertissement_title"
+            android:textColor="@color/warning_text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/AddPublication_avertissement_paragraphe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/warning_text"
+            android:text="@string/AddPublication_avertissement_paragraphe"/>
+
+        <TextView
+            android:id="@+id/AddPublication_avertissement_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textAllCaps="false"
+            android:layout_marginVertical="8dp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_link"
+            android:text="@string/AddPublication_avertissement_link" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

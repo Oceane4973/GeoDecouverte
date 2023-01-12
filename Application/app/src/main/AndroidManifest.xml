@@ -3,21 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="edu.atelier.technique">
 
-<<<<<<< Updated upstream
+
     <uses-permission android:name="android.permission.INTERNET"/>
-<<<<<<< HEAD
-=======
+
     <uses-feature android:name="android.hardware.camera"
         android:required="true" />
 
->>>>>>> Stashed changes
-=======
-    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
+
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
->>>>>>> e9f2266f1c5b947e8aaed3674e84d9f466140587
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -26,15 +25,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Application"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".HomePage"
-            android:exported="true">
+            android:name=".ui.BootAnimation"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomePage"
+            android:exported="true"
+            android:label="Home">
+        </activity>
+        <activity
+            android:name=".ui.InterestPage"
+            android:exported="true"
+            android:label="InterestPage">
+        </activity>
+        <activity
+            android:name=".ui.InfoPage"
+            android:exported="true"
+            android:label="InfoPage">
+        </activity>
+        <activity
+            android:name=".ui.AddPublicationPage"
+            android:exported="true"
+            android:label="AddPublicationPage">
         </activity>
     </application>
 
