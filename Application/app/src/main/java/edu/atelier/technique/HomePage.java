@@ -51,9 +51,9 @@ public class HomePage extends AppCompatActivity {
         this.simpleList = (ListView) findViewById(R.id.homePageListView);
         //this.imageView.setImageBitmap(imageBitmap);
 
-        /*publicationList.add(new PublicationModel(new ImageModel(1,"Nimes","France","https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg","12/01/2023")));
+        publicationList.add(new PublicationModel(new ImageModel(1,"Nimes","France","https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg","12/01/2023")));
         publicationList.add(new PublicationModel(new ImageModel(2,"Nimes2","France2","https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg","12/01/2023")));
-        publicationList.add(new PublicationModel(new ImageModel(3,"Nimes3","France3","https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg","12/01/2023")));*/
+        publicationList.add(new PublicationModel(new ImageModel(3,"Nimes3","France3","https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg","12/01/2023")));
 
         HomePageAdapter myAdapter = new HomePageAdapter(this, R.layout.list_view_item, publicationList);
         simpleList.setAdapter(myAdapter);

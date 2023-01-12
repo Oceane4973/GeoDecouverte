@@ -42,7 +42,7 @@ public class BootAnimation extends AppCompatActivity {
         }
 
         new Handler().postDelayed(()-> {
-                startActivity(new Intent(getApplicationContext(), AddPublicationPage.class));
+                startActivity(new Intent(getApplicationContext(), HomePage.class));
                 finish();
         }, 3000);
     }
