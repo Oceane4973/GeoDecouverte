@@ -4,6 +4,7 @@ public class ImageModel {
 
     private int id;
     public String city, country, url, date;
+    public int image;
 
     public ImageModel(int id, String city, String country, String url, String date) {
         this.id = id;
@@ -33,7 +34,7 @@ public class ImageModel {
         return country;
     }
 
-    public String gettUrl() {
+    public String getUrl() {
         return url;
     }
 
