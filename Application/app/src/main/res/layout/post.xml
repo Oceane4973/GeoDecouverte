@@ -42,7 +42,7 @@
                 android:layout_gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_noun_gps_location_5392125"
+                app:srcCompat="@drawable/ic_gps_location"
                 tools:ignore="ContentDescription" />
 
             <TextView

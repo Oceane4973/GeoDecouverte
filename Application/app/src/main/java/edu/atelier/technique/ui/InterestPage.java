@@ -15,7 +15,6 @@ public class InterestPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.saved);
 
-        getSupportActionBar().hide();
 
         this.findViewById(R.id.back).setOnClickListener(click -> {
             super.onBackPressed();

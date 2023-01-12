@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_noun_gps_location_5392125"
+        app:srcCompat="@drawable/ic_gps_location"
         app:tint="@color/cardview_dark_background" />
 
     <TextView

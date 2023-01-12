@@ -22,7 +22,6 @@ public class BootAnimation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boot_animation);
 
-        getSupportActionBar().hide();
 
         this.findViewById(R.id.app_name).setAlpha(0f);
         this.findViewById(R.id.app_name).setVisibility(View.VISIBLE);
