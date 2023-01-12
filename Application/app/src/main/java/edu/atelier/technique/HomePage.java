@@ -67,7 +67,8 @@ public class HomePage extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), InfoPage.class));
         });
 
-        // ListOfPublications.getInstance().saveNewInstance(this);
-        // ListOfPublications.getInstance().loadOldInstance(this);
+
+        ListOfPublications.getInstance().writeToFile(this);
+        ListOfPublications.getInstance().readFromFile(this);
     }
 }

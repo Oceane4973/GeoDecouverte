@@ -1,5 +1,7 @@
 package edu.atelier.technique.models;
 
+import org.json.JSONObject;
+
 public class PublicationModel {
     private int id;
     private ImageModel myImage;
@@ -18,7 +20,7 @@ public class PublicationModel {
         return isFavoris;
     }
 
-    public String toJsonString() {
-        return myImage.toJsonString();
+    public JSONObject toJson() {
+        return myImage.toJson();
     }
 }

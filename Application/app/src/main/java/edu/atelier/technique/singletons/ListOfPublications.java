@@ -1,16 +1,29 @@
 package edu.atelier.technique.singletons;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Environment;
 import android.util.Log;
+
+import androidx.core.content.ContextCompat;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.NavigableMap;
+
 import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.models.PublicationModel;
 
@@ -49,71 +62,65 @@ public class ListOfPublications {
         return this.list;
     }
 
-    private String toJsonString(){
-        String jsonString = "[";
-        for(PublicationModel publication : this.list){
-            jsonString+= publication.toJsonString() + ",";
+    private JSONArray JSONList(){
+        JSONArray json = new JSONArray();
+        for(PublicationModel publication : this.list) {
+            json.put(publication.toJson());
         }
-        return jsonString + "]";
+        return json;
     }
 
-    public void saveNewInstance(Context context){
-        FileOutputStream fos  = null;
-
-        String JsonString = "hey";
+    public void writeToFile(Context context) {
         try {
-            context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
-            fos.write(JsonString.getBytes(), 0, JsonString.length());
-            Log.d("AtelierTechnique","fichier sauvé : " + JsonString);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e){
-            e.printStackTrace();
-        } finally {
-            if (fos != null){
-                try {
-                    fos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE));
+            outputStreamWriter.write(JSONList().toString());
+            outputStreamWriter.close();
+            Log.d("AtelierTechnique","Fichier crée : " + JSONList().toString());
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+    public JSONArray readFromFile(Context context) {
+
+        this.list = new ArrayList<PublicationModel>();
+        JSONArray publications = null;
+
+        try {
+            InputStream inputStream = context.openFileInput(FILE_NAME);
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
                 }
-            }
-        }
-    }
-
-    public void loadOldInstance(Context context){
-        FileInputStream fis  = null;
-        try {
-            fis = context.openFileInput(FILE_NAME);
-            InputStreamReader json = new InputStreamReader(fis);
-            this.list = new ArrayList<PublicationModel>();
-            try {
-                JSONArray publications = new JSONArray(json);
-
-                for( int i = 0; i < publications.length(); i++){
+                publications = new JSONArray(stringBuilder.toString());
+                for (int i = 0; i < publications.length(); i++) {
                     JSONObject publication = publications.getJSONObject(i);
                     this.list.add(
                             new PublicationModel(new ImageModel(
-                            Integer.parseInt(publication.getString("id")),
-                            publication.getString("city"),
-                            publication.getString("country"),
-                            publication.getString("url"),
-                            publication.getString("date")
-                    )));
+                                    Integer.parseInt(publication.getString("id")),
+                                    publication.getString("city"),
+                                    publication.getString("country"),
+                                    publication.getString("url"),
+                                    publication.getString("date")
+                            )));
                 }
-                Log.d("AtelierTechnique","fichier chargé : " + this.toJsonString());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            if (fis != null){
-                try {
-                    fis.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Log.d("AtelierTechnique", "fichier chargé (JSON): " + this.JSONList());
+                inputStream.close();
             }
         }
+        catch (FileNotFoundException e) {
+            Log.e("login activity", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("login activity", "Can not read file: " + e.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return publications;
     }
+
 }

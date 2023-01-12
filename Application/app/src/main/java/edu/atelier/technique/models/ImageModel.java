@@ -1,5 +1,8 @@
 package edu.atelier.technique.models;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class ImageModel {
 
     private int id;
@@ -11,14 +14,6 @@ public class ImageModel {
         this.country = country;
         this.url = url;
         this.date = date;
-    }
-
-    public String toJsonString() {
-        return (" { \"id\" : " + id + "\n" +
-                " \"city\" : " + city + "\n" +
-                " \"country\" : " + country + "\n" +
-                " \"url\" : " + url + "\n" +
-                " \"date\" : " + date + " } \n");
     }
 
     public int getId() {
@@ -39,5 +34,20 @@ public class ImageModel {
 
     public String gettDate() {
         return date;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("id", this.id);
+            json.put("city", this.city);
+            json.put("country", this.country);
+            json.put("url", this.url);
+            json.put("date", this.date);
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return json;
     }
 }
