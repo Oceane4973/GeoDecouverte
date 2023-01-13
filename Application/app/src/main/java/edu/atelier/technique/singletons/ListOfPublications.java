@@ -30,7 +30,6 @@ import edu.atelier.technique.models.PublicationModel;
 import edu.atelier.technique.notifications.Notifications;
 
 /** EXEMPLE D'APPEL :
- ListOfPublications.getInstance().getList();
 */
 
 public class ListOfPublications {
