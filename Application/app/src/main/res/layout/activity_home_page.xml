@@ -131,6 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:max="200"
                     app:thumbColor="#ffb300"
                     app:trackHeight="12dp"
                     android:layout_marginTop="20dp"/>
@@ -180,7 +181,7 @@
             android:textColor="@color/white"/>
     </LinearLayout>
     </LinearLayout>
-    
+
     <Button
         android:id="@+id/details_filters"
         android:layout_width="wrap_content"

@@ -15,6 +15,8 @@ import edu.atelier.technique.singletons.ListOfPublications;
 import edu.atelier.technique.ui.Adapter.HomePageAdapter;
 import edu.atelier.technique.models.PublicationModel;
 import android.content.Intent;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import edu.atelier.technique.ui.Pages.InfoPage;
 import edu.atelier.technique.ui.Pages.InterestPage;
@@ -27,6 +29,7 @@ public class HomePage extends AppCompatActivity {
 
     private LinearLayout filterLayout;
     private Button filterButton;
+    private SeekBar seekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class HomePage extends AppCompatActivity {
 
         this.filterLayout = (LinearLayout) findViewById(R.id.filterLayout);
         this.filterButton = (Button) this.findViewById(R.id.details_filters);
+        this.seekBar = (SeekBar) this.findViewById(R.id.seekBar);
 
         this.simpleList = (ListView) findViewById(R.id.homePageListView);
 
@@ -66,6 +70,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         this.findViewById(R.id.search).setOnClickListener( click -> {
+            searchFilters();
             setFiltersVisibility();
         });
 
@@ -75,13 +80,29 @@ public class HomePage extends AppCompatActivity {
 
 
         this.findViewById(R.id.imageButtonAddPublication).setOnClickListener(click -> {
-
             startActivity(new Intent(getApplicationContext(), Picpic_activity.class));
         });
-        
+
+        this.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
+                ((TextView) findViewById(R.id.km)).setText(String.valueOf(progress) + " km");
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) { }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) { }
+        });
+
         ListOfPublications.getInstance().writeToFile(this);
         ListOfPublications.getInstance().readFromFile(this);
     }
+
+    private void searchFilters(){
+        //TODO : faire la fonction
+    }
+
+
 
     private void setFiltersVisibility(){
         if(filterLayout.getVisibility() == View.VISIBLE){
