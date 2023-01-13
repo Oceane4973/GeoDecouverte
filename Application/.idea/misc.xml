@@ -3,17 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/ic_bookmark.xml" value="0.3185" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/ic_bookmark_big.xml" value="0.3185" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/ic_noun_gps_location_5392125.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/informations_icon.xml" value="0.3185" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/marque_page_icon.xml" value="0.212" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/path_boot_animation.xml" value="0.196" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/selector_button_no.xml" value="0.259" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/selector_button_yes.xml" value="0.316" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_button_NO.xml" value="0.316" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_button_YES.xml" value="0.316" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_button_no.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_filterbar.xml" value="0.3185" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_input.xml" value="0.3185" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_publication_container.xml" value="0.316" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_right_filter.xml" value="0.3185" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/drawable/shape_spinner.xml" value="0.3185" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_add_publication.xml" value="0.25" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_boot_animation.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_home_page2.xml" value="0.3421875" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_info_page.xml" value="0.33" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/activity_interest_page.xml" value="0.3421875" />
+        <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/grid_item.xml" value="0.17617753623188406" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/home_page_layout.xml" value="0.5" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/list_view_item.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/omong/OneDrive/Bureau/Atelier_technique/Application/app/src/main/res/layout/post.xml" value="0.25" />
