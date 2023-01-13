@@ -14,6 +14,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
 
+
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -33,6 +35,8 @@ import java.util.concurrent.Executor;
 
 import edu.atelier.technique.HomePage;
 import edu.atelier.technique.R;
+import edu.atelier.technique.singletons.ImagePostData;
+import edu.atelier.technique.singletons.ListOfPublications;
 
 public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.Analyzer, View.OnClickListener {
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
@@ -132,8 +136,14 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
 
 
+        Log.d("===========================================","====================");
+        Log.d("cccc", getContentResolver().toString());
+        Log.d("dddd", MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString());
+        Log.d("eeee", contentValues.toString());
+        Log.d("===========================================","====================");
 
         imageCapture.takePicture(
+
                 new ImageCapture.OutputFileOptions.Builder(
                         getContentResolver(),
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
@@ -144,6 +154,7 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
                         Toast.makeText(Picpic_activity.this, "Photo has been saved successfully.", Toast.LENGTH_SHORT).show();
+                        ImagePostData.getInstance().setImageLink("content://media/external/images/media");
                     }
 
                     @Override
