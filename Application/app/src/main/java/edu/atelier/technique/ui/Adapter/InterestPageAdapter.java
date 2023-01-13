@@ -2,7 +2,6 @@ package edu.atelier.technique.ui.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +39,7 @@ public class InterestPageAdapter extends ArrayAdapter {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        v = inflater.inflate(R.layout.grid_item, null);
+        v = inflater.inflate(R.layout.component_grid_item, null);
 
         TextView city_name = (TextView) v.findViewById(R.id.gridText);
         ImageView imageView = (ImageView) v.findViewById(R.id.gridImage);

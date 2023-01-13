@@ -1,12 +1,16 @@
 package edu.atelier.technique.ui.Pages;
 
+import android.Manifest;
 import static edu.atelier.technique.notifications.Notifications.CHANNEL_1_ID;
-
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.app.NotificationCompat;
 
 import edu.atelier.technique.HomePage;
