@@ -27,9 +27,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Application"
         android:usesCleartextTraffic="true"
+
         tools:targetApi="31">
         <activity
             android:name=".ui.Pages.BootAnimation"
+            android:screenOrientation="portrait"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
