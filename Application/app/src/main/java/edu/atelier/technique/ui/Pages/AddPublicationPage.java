@@ -26,13 +26,6 @@ public class AddPublicationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_publication);
 
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, 100);
-            Log.d("Camera Permission","Denied");
-        }else{
-            Log.d("Camera Permission","Granted");
-        }
-
         getSupportActionBar().hide();
 
         this.findViewById(R.id.back).setOnClickListener(click -> {
