@@ -11,9 +11,9 @@ import edu.atelier.technique.ui.Adapter.HomePageAdapter;
 import edu.atelier.technique.models.PublicationModel;
 import android.content.Intent;
 
-import edu.atelier.technique.ui.InfoPage;
-import edu.atelier.technique.ui.InterestPage;
-import edu.atelier.technique.ui.Picpic_activity;
+import edu.atelier.technique.ui.Pages.InfoPage;
+import edu.atelier.technique.ui.Pages.InterestPage;
+import edu.atelier.technique.ui.Pages.Picpic_activity;
 
 public class HomePage extends AppCompatActivity {
 

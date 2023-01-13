@@ -60,7 +60,7 @@
             android:label="AddPublicationPage">
         </activity>
         <activity
-            android:name=".ui.Picpic_activity"
+            android:name=".ui.Pages.Picpic_activity"
             android:exported="true"
             android:label="Picpic_activity">
         </activity>
