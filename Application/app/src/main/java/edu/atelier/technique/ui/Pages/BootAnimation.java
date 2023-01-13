@@ -1,4 +1,4 @@
-package edu.atelier.technique.ui;
+package edu.atelier.technique.ui.Pages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,10 +22,8 @@ public class BootAnimation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boot_animation);
 
-
         this.findViewById(R.id.app_name).setAlpha(0f);
         this.findViewById(R.id.app_name).setVisibility(View.VISIBLE);
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             ObjectAnimator animator = ObjectAnimator.ofFloat(this.findViewById(R.id.ic_gps), "translationX", -300f);
