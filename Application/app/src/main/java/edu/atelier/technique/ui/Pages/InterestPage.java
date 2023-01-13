@@ -35,7 +35,7 @@ public class InterestPage extends AppCompatActivity {
         publicationList.add(new PublicationModel(new ImageModel(3, "Nimes3", "France3",
                 "https://www.okvoyage.com/wp-content/uploads/2020/10/nimes-france.jpeg", "12/01/2023")));
 
-        InterestPageAdapter myAdapter = new InterestPageAdapter(this.getApplicationContext(), R.layout.grid_item, publicationList, this);
+        InterestPageAdapter myAdapter = new InterestPageAdapter(this.getApplicationContext(), R.layout.component_grid_item, publicationList, this);
         simpleList.setAdapter(myAdapter);
     }
 }

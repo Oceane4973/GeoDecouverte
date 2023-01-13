@@ -1,4 +1,4 @@
-package edu.atelier.technique.ui;
+package edu.atelier.technique.ui.Pages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +41,7 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.picpic);
+        setContentView(R.layout.activity_picpic);
 
         previewView = findViewById(R.id.previewView);
         bCapture = findViewById(R.id.bPicCapture);
