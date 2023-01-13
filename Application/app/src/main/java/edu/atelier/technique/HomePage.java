@@ -5,15 +5,15 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-
 import edu.atelier.technique.models.ImageModel;
+import edu.atelier.technique.singletons.ListOfPublications;
 import edu.atelier.technique.ui.Adapter.HomePageAdapter;
 import edu.atelier.technique.models.PublicationModel;
-
 import android.content.Intent;
 
-import edu.atelier.technique.ui.Pages.InfoPage;
-import edu.atelier.technique.ui.Pages.InterestPage;
+import edu.atelier.technique.ui.InfoPage;
+import edu.atelier.technique.ui.InterestPage;
+import edu.atelier.technique.ui.Picpic_activity;
 
 public class HomePage extends AppCompatActivity {
 
@@ -45,7 +45,11 @@ public class HomePage extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), InfoPage.class));
         });
 
-        // ListOfPublications.getInstance().saveNewInstance(this);
-        // ListOfPublications.getInstance().loadOldInstance(this);
+        this.findViewById(R.id.imageButtonAddPublication).setOnClickListener(click -> {
+
+            startActivity(new Intent(getApplicationContext(), Picpic_activity.class));
+        });
+        ListOfPublications.getInstance().writeToFile(this);
+        ListOfPublications.getInstance().readFromFile(this);
     }
 }
