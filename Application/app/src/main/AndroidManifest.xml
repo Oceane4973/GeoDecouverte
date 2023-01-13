@@ -56,6 +56,11 @@
             android:exported="true"
             android:label="AddPublicationPage">
         </activity>
+        <activity
+            android:name=".ui.Picpic_activity"
+            android:exported="true"
+            android:label="Picpic_activity">
+        </activity>
     </application>
 
 </manifest>
