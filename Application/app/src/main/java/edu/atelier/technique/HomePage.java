@@ -65,6 +65,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         this.findViewById(R.id.imageButtonAddPublication).setOnClickListener(click -> {
+
             startActivity(new Intent(getApplicationContext(), Picpic_activity.class));
         });
     }
