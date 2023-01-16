@@ -140,6 +140,7 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         Log.d("cccc", getContentResolver().toString());
         Log.d("dddd", MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString());
         Log.d("eeee", contentValues.toString());
+        Log.d("eeee", contentValues.get("_display_name").toString());
         Log.d("===========================================","====================");
 
         imageCapture.takePicture(
@@ -153,8 +154,10 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
                 new ImageCapture.OnImageSavedCallback() {
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                        Toast.makeText(Picpic_activity.this, "Photo has been saved successfully.", Toast.LENGTH_SHORT).show();
-                        ImagePostData.getInstance().setImageLink("content://media/external/images/media");
+                        Toast.makeText(Picpic_activity.this, "Pic saved at "+
+                                "Pictures/"+contentValues.get("_display_name").toString(),
+                                Toast.LENGTH_LONG).show();
+                        ImagePostData.getInstance().setImageLink("Pictures/"+contentValues.get("_display_name").toString());
                     }
 
                     @Override
