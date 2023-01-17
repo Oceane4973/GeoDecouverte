@@ -1,6 +1,7 @@
 package edu.atelier.technique.models;
 
 import android.Manifest;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,11 +12,11 @@ public class ImageModel {
     public String city, country, url, date;
     public int image;
 
-    public ImageModel(int id, String city, String country, String url, String date) {
+    public ImageModel(int id, String city, String country, String filename, String date) {
         this.id = id;
         this.city = city;
         this.country = country;
-        this.url = url;
+        this.url = "https://api-2-atelier-technique-geodecouverte.vercel.app/image/" + filename + ".png";
         this.date = date;
     }
 

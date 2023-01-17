@@ -56,7 +56,7 @@ public class GetAllImagesWithRadiusUseCase {
                                     Integer.parseInt(jsonObject.getString("id")),
                                     jsonObject.getString("city"),
                                     jsonObject.getString("country"),
-                                    jsonObject.getString("url"),
+                                    jsonObject.getString("filename"),
                                     jsonObject.getString("date")
                             )
                     );
