@@ -141,7 +141,7 @@ public class HomePage extends AppCompatActivity {
                 break;
         }
     }
-    
+
     private void setFiltersVisibility(){
         if(filterLayout.getVisibility() == View.VISIBLE){
             filterLayout.setVisibility(View.GONE);
