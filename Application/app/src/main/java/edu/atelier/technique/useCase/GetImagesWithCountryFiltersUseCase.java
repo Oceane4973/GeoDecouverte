@@ -25,20 +25,23 @@ public class GetImagesWithCountryFiltersUseCase {
     private String TAG = "AtelierTechnique";
     private String countryFilters;
     private String url = "/images/country_filter";
+    public List<ImageModel> itemList;
+    private int radius;
 
     private APIService webService;
 
-    public GetImagesWithCountryFiltersUseCase(String countryFilters){
+    public GetImagesWithCountryFiltersUseCase(String countryFilters, int radius){
         super();
         this.countryFilters = countryFilters;
         this.webService = new APIService();
+        this.radius = radius;
     }
 
     public void doInBackGround() {
-        String jsonStr = webService.makeServiceCall(this.url + "/" + countryFilters);
+        String jsonStr = webService.makeServiceCall(this.url + "/" + countryFilters+ "/" + radius);
         Log.d(TAG, jsonStr);
 
-        List<ImageModel> itemList = new ArrayList<ImageModel>();
+        this.itemList = new ArrayList<ImageModel>();
 
         if (jsonStr != null) {
             try {

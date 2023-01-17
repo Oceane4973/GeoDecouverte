@@ -14,7 +14,7 @@ import java.net.URL;
 public class APIService {
 
     private String TAG = "AtelierTechnique";
-    private String URL = "https://api-atelier-technique.vercel.app";
+    private String URL = "https://api-2-atelier-technique-geodecouverte.vercel.app";
 
     public APIService(){}
 

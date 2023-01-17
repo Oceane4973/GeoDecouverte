@@ -1,16 +1,19 @@
 package edu.atelier.technique.useCase;
 
 import android.util.Log;
+
+import com.google.android.gms.maps.model.LatLng;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+
 import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.services.APIService;
+import edu.atelier.technique.singletons.Location;
 
 /** EXEMPLE D'APPEL :
 private void executeInThread(){
@@ -20,20 +23,24 @@ private void executeInThread(){
 }
  **/
 
-public class GetAllImagesUseCase{
+public class GetAllImagesWithRadiusUseCase {
 
     private String TAG = "AtelierTechnique";
-    private String url = "/images/all";
+    private String url = "/images/radius_filter";
     public List<ImageModel> itemList;
+    private int radius;
+
     private APIService webService;
 
-    public GetAllImagesUseCase(){
+    public GetAllImagesWithRadiusUseCase(int radius){
         super();
         this.webService = new APIService();
+        this.radius = radius;
     }
 
     public void doInBackGround() {
-        String jsonStr = webService.makeServiceCall(this.url);
+        LatLng latlng = Location.getInstance().getCurrentLocation();
+        String jsonStr = webService.makeServiceCall(this.url+ "/" + latlng.latitude + "/" + latlng.longitude + "/" + this.radius);
         Log.d(TAG, jsonStr);
 
         this.itemList = new ArrayList<ImageModel>();

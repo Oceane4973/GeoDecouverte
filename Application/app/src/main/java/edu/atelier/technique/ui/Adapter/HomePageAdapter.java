@@ -50,7 +50,6 @@ public class HomePageAdapter extends ArrayAdapter {
 
 
         ImageAsyncService getImage = new ImageAsyncService(publicationList.get(position).getImage().getUrl());
-
         Runnable runnable = () -> {
             getImage.doInBackGround();
             this.activity.runOnUiThread(() -> imageView.setImageBitmap(getImage.getItemResult()));
