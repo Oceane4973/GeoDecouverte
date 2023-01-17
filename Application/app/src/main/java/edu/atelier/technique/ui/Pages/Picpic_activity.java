@@ -33,8 +33,11 @@ import java.util.concurrent.Executor;
 
 import edu.atelier.technique.HomePage;
 import edu.atelier.technique.R;
+import edu.atelier.technique.singletons.ListOfPermissions;
 
 public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.Analyzer, View.OnClickListener {
+    private static final int CAMERA_PERMISSION = 1000;
+    private static final int LOCATION_PERMISSION = 2000;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
 
     PreviewView previewView;
@@ -48,11 +51,12 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picpic);
 
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
-            Log.d("Camera Permission","Denied");
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, 100);
-        }else{
-            Log.d("Camera Permission","Granted");
+        if(!ListOfPermissions.getInstance().getCameraPermission()){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION);
+        }else {
+            if (!ListOfPermissions.getInstance().getlocationPermission()) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
+            }
         }
 
         previewView = findViewById(R.id.previewView);
@@ -71,7 +75,35 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
                 e.printStackTrace();
             }
         }, getExecutor());
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case CAMERA_PERMISSION:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    ListOfPermissions.getInstance().setCameraPermission(true);
+                    if (!ListOfPermissions.getInstance().getlocationPermission()) {
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
+                    }
+                }else{
+                    ListOfPermissions.getInstance().setCameraPermission(false);
+                    startActivity(new Intent(getApplicationContext(), HomePage.class));
+                }
+                break;
+
+            case LOCATION_PERMISSION:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    ListOfPermissions.getInstance().setlocalisationPermission(true);
+                }else{
+                    ListOfPermissions.getInstance().setlocalisationPermission(false);
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 
     Executor getExecutor() {
