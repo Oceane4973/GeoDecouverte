@@ -63,6 +63,11 @@
             android:exported="true"
             android:label="Picpic_activity">
         </activity>
+        <activity
+            android:name=".ui.Pages.SettingsPage"
+            android:exported="true"
+            android:label="SettingsPage">
+        </activity>
     </application>
 
 </manifest>

@@ -77,35 +77,6 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         }, getExecutor());
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case CAMERA_PERMISSION:
-                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    ListOfPermissions.getInstance().setCameraPermission(true);
-                    if (!ListOfPermissions.getInstance().getlocationPermission()) {
-                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
-                    }
-                }else{
-                    ListOfPermissions.getInstance().setCameraPermission(false);
-                    startActivity(new Intent(getApplicationContext(), HomePage.class));
-                }
-                break;
-
-            case LOCATION_PERMISSION:
-                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    ListOfPermissions.getInstance().setlocalisationPermission(true);
-                }else{
-                    ListOfPermissions.getInstance().setlocalisationPermission(false);
-                }
-                break;
-
-            default:
-                break;
-        }
-    }
-
     Executor getExecutor() {
         return ContextCompat.getMainExecutor(this);
     }
@@ -154,8 +125,6 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         }
     }
 
-
-
     private void capturePhoto() {
         long timestamp = System.currentTimeMillis();
 
@@ -185,5 +154,34 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
                 }
         );
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case CAMERA_PERMISSION:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    ListOfPermissions.getInstance().setCameraPermission(true);
+                    if (!ListOfPermissions.getInstance().getlocationPermission()) {
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
+                    }
+                }else{
+                    ListOfPermissions.getInstance().setCameraPermission(false);
+                    startActivity(new Intent(getApplicationContext(), HomePage.class));
+                }
+                break;
+
+            case LOCATION_PERMISSION:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    ListOfPermissions.getInstance().setlocalisationPermission(true);
+                }else{
+                    ListOfPermissions.getInstance().setlocalisationPermission(false);
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 }

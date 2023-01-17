@@ -3,14 +3,12 @@ package edu.atelier.technique;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -26,6 +24,7 @@ import android.content.Intent;
 import edu.atelier.technique.ui.Pages.InfoPage;
 import edu.atelier.technique.ui.Pages.InterestPage;
 import edu.atelier.technique.ui.Pages.Picpic_activity;
+import edu.atelier.technique.ui.Pages.SettingsPage;
 
 public class HomePage extends AppCompatActivity {
 
@@ -51,7 +50,6 @@ public class HomePage extends AppCompatActivity {
             }
         }
 
-
         this.filterLayout = (LinearLayout) findViewById(R.id.filterLayout);
         this.filterButton = (Button) this.findViewById(R.id.details_filters);
 
@@ -67,12 +65,26 @@ public class HomePage extends AppCompatActivity {
         HomePageAdapter myAdapter = new HomePageAdapter(this.getApplicationContext(), R.layout.component_post, publicationList, this);
         simpleList.setAdapter(myAdapter);
 
+
+        //Création listener des 4 boutons de la HomePage
+        //Bouton favoris
         this.findViewById(R.id.imageButtonBookMark).setOnClickListener(click -> {
             startActivity(new Intent(getApplicationContext(), InterestPage.class));
         });
 
+        //Bouton informations
         this.findViewById(R.id.imageButtonInformations).setOnClickListener(click -> {
             startActivity(new Intent(getApplicationContext(), InfoPage.class));
+        });
+
+        //Bouton ajout publication
+        this.findViewById(R.id.imageButtonAddPublication).setOnClickListener(click -> {
+            startActivity(new Intent(getApplicationContext(), Picpic_activity.class));
+        });
+
+        //Bouton des paramètres
+        this.findViewById(R.id.imageButtonSettings).setOnClickListener(click -> {
+            startActivity(new Intent(getApplicationContext(), SettingsPage.class));
         });
 
         
@@ -86,16 +98,6 @@ public class HomePage extends AppCompatActivity {
 
         this.findViewById(R.id.search).setOnClickListener( click -> {
             setFiltersVisibility();
-        });
-
-        this.findViewById(R.id.imageButtonInformations).setOnClickListener(click -> {
-            startActivity(new Intent(getApplicationContext(), InfoPage.class));
-        });
-
-
-        this.findViewById(R.id.imageButtonAddPublication).setOnClickListener(click -> {
-
-            startActivity(new Intent(getApplicationContext(), Picpic_activity.class));
         });
         
         ListOfPublications.getInstance().writeToFile(this);

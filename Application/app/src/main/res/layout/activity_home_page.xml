@@ -21,17 +21,17 @@
 
     <ImageButton
         android:id="@+id/imageButtonAddPublication"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:background="@color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/appareil_photo_icon" />
+        app:srcCompat="@drawable/ic_full_camera" />
 
     <ImageButton
         android:id="@+id/imageButtonBookMark"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:background="@color/transparent"
@@ -41,13 +41,23 @@
 
     <ImageButton
         android:id="@+id/imageButtonInformations"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:background="@color/transparent"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonBookMark"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/informations_icon" />
+        app:srcCompat="@drawable/ic_informations" />
+
+    <ImageButton
+        android:id="@+id/imageButtonSettings"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonInformations"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_settings" />
 
 
     <ListView
