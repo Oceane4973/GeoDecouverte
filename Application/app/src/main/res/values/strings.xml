@@ -24,7 +24,6 @@
     <string name="AddPublication_avertissement_link"><u>Voir les conditions d\'utilisation</u></string>
     <string name="notif_message">Votre publication à bien été prise en compte</string>
     <string-array name="villeOuPays">
-        <item>Choisir...</item>
         <item>Ville</item>
         <item>Pays</item>
     </string-array>
