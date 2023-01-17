@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                app:srcCompat="@drawable/ic_camera" />
+                app:srcCompat="@drawable/ic_empty_camera" />
 
 
         </RelativeLayout>

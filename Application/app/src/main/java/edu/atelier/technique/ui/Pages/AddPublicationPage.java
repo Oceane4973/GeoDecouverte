@@ -1,16 +1,11 @@
 package edu.atelier.technique.ui.Pages;
 
-import android.Manifest;
 import static edu.atelier.technique.notifications.Notifications.CHANNEL_1_ID;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.app.NotificationCompat;
 
 import edu.atelier.technique.HomePage;
@@ -49,7 +44,7 @@ public class AddPublicationPage extends AppCompatActivity {
 
     public void sendNotificationOnChannel(String title, String message, Context context) {
         NotificationCompat.Builder notification = new NotificationCompat.Builder(context, CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.informations_icon)
+                .setSmallIcon(R.drawable.ic_informations)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH);

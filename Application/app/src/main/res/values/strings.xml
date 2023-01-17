@@ -22,7 +22,13 @@
     <string name="AddPublication_avertissement_title">Avertissement</string>
     <string name="AddPublication_avertissement_paragraphe">Lorsque vous partagez ou publiez du contenu protégé par des droits de propriété intellectuelle (comme des photos) sur notre Service ou en rapport avec ce dernier, vous nous accordez une licence non exclusive.</string>
     <string name="AddPublication_avertissement_link"><u>Voir les conditions d\'utilisation</u></string>
+    <string name="SettingsPage_title">Paramètres</string>
+    <string name="SettingsPage_introduction">Une fois une permission acceptée, il vous faudra aller dans les paramètres pour annuler.</string>
+    <string name="SettingsPage_service_title">Choix des permissions</string>
     <string name="notif_message">Votre publication à bien été prise en compte</string>
+    <string name="cameraSwitch">Autoriser l\'accès à la caméra</string>
+    <string name="locationSwitch">Autoriser l\'accès à la localisation</string>
+    <string name="externalStorageSwitch">Autoriser l\'accès aux fichiers</string>
     <string-array name="villeOuPays">
         <item>Ville</item>
         <item>Pays</item>
