@@ -121,7 +121,7 @@ public class HomePage extends AppCompatActivity {
             case LOCATION_PERMISSION:
                 if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     ListOfPermissions.getInstance().setlocalisationPermission(true);
-                }else{
+                } else {
                     ListOfPermissions.getInstance().setlocalisationPermission(false);
                 }
                 break;
@@ -129,17 +129,19 @@ public class HomePage extends AppCompatActivity {
             case EXTERNAL_STORAGE:
                 if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     ListOfPermissions.getInstance().setExternalStoragePermission(true);
-                }else{
+                } else {
                     ListOfPermissions.getInstance().setExternalStoragePermission(false);
                 }
-                if(!ListOfPermissions.getInstance().getlocationPermission()){
-                    ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
+                if (!ListOfPermissions.getInstance().getlocationPermission()) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
                 }
                 break;
 
             default:
                 break;
         }
+    }
+    
     private void setFiltersVisibility(){
         if(filterLayout.getVisibility() == View.VISIBLE){
             filterLayout.setVisibility(View.GONE);
@@ -148,12 +150,5 @@ public class HomePage extends AppCompatActivity {
             filterLayout.setVisibility(View.VISIBLE);
             filterButton.setText("- Filtres");
         }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-
     }
 }
