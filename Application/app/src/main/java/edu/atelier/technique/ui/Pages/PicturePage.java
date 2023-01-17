@@ -21,11 +21,14 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.common.util.concurrent.ListenableFuture;
@@ -33,12 +36,10 @@ import com.google.common.util.concurrent.ListenableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 
-import edu.atelier.technique.HomePage;
 import edu.atelier.technique.R;
 import edu.atelier.technique.singletons.ImagePostData;
-import edu.atelier.technique.singletons.ListOfPublications;
 
-public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.Analyzer, View.OnClickListener {
+public class PicturePage extends AppCompatActivity implements ImageAnalysis.Analyzer, View.OnClickListener {
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
 
     PreviewView previewView;
@@ -152,20 +153,55 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
                 ).build(),
                 getExecutor(),
                 new ImageCapture.OnImageSavedCallback() {
+/*
+                    public void onCaptureSuccess(ImageProxy image, int rotationDegrees)
+                    {
+                        ImageView imageView = findViewById(R.id.imageView);
+                        imageView.setImageBitmap(imageProxyToBitmap(image));
+                        //imageView.setRotation(rotationDegrees);
+
+                        ImagePostData.getInstance().setBitMap(imageView.getImageMatrix());
+
+                        //image.close();
+                    }
+*/
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                        Toast.makeText(Picpic_activity.this, "Pic saved at "+
+                        Toast.makeText(PicturePage.this, "Pic saved at "+
                                 "Pictures/"+contentValues.get("_display_name").toString(),
                                 Toast.LENGTH_LONG).show();
+
+                        /*
+                        Uri imageUri = data.getData();
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                         */
                         ImagePostData.getInstance().setImageLink("Pictures/"+contentValues.get("_display_name").toString());
+
+                        /*
+                        Uri imageUri = data.getData();
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                        ImagePostData.getInstance().setBitMap(bitmap);
+                        */
+
+                        //goToValidate();
+                        startActivity(new Intent(getApplicationContext(), ValidatePicPage.class));
                     }
 
                     @Override
                     public void onError(@NonNull ImageCaptureException exception) {
-                        Toast.makeText(Picpic_activity.this, "Error saving photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PicturePage.this, "Error saving photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
         );
 
     }
+
+/*
+    public void goToValidate(){
+        this.findViewById(R.id.imageButtonAddPublication).setOnClickListener(click -> {
+
+            startActivity(new Intent(getApplicationContext(), ValidatePicPage.class));
+        });
+    }
+*/
 }
