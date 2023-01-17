@@ -3,6 +3,8 @@ package edu.atelier.technique;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -33,12 +35,14 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         initiatePermissions();
 
-        if(!ListOfPermissions.getInstance().getlocationPermission()){
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
-        }
         if(!ListOfPermissions.getInstance().getExternalStoragePermission()){
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, EXTERNAL_STORAGE);
+        }else{
+            if(!ListOfPermissions.getInstance().getlocationPermission()){
+                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
+            }
         }
+
 
         this.simpleList = (ListView) findViewById(R.id.homePageListView);
 
@@ -97,6 +101,9 @@ public class HomePage extends AppCompatActivity {
                     ListOfPermissions.getInstance().setExternalStoragePermission(true);
                 }else{
                     ListOfPermissions.getInstance().setExternalStoragePermission(false);
+                }
+                if(!ListOfPermissions.getInstance().getlocationPermission()){
+                    ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
                 }
                 break;
 

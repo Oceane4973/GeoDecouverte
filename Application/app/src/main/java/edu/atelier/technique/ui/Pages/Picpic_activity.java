@@ -53,9 +53,10 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
 
         if(!ListOfPermissions.getInstance().getCameraPermission()){
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, CAMERA_PERMISSION);
-        }
-        if(!ListOfPermissions.getInstance().getlocationPermission()){
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
+        }else {
+            if (!ListOfPermissions.getInstance().getlocationPermission()) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
+            }
         }
 
         previewView = findViewById(R.id.previewView);
@@ -83,6 +84,9 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
             case CAMERA_PERMISSION:
                 if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
                     ListOfPermissions.getInstance().setCameraPermission(true);
+                    if (!ListOfPermissions.getInstance().getlocationPermission()) {
+                        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, LOCATION_PERMISSION);
+                    }
                 }else{
                     ListOfPermissions.getInstance().setCameraPermission(false);
                     startActivity(new Intent(getApplicationContext(), HomePage.class));

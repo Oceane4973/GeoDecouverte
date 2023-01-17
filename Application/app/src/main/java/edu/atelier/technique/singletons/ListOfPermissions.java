@@ -1,5 +1,7 @@
 package edu.atelier.technique.singletons;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 /** EXEMPLE D'APPEL :
  ListOfPermissions.getInstance().getCameraPermission();
  */
