@@ -14,13 +14,16 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 import edu.atelier.technique.models.ImageModel;
-import edu.atelier.technique.singletons.ListOfPublications;
+import edu.atelier.technique.singletons.Location;
 import edu.atelier.technique.ui.Adapter.HomePageAdapter;
 import edu.atelier.technique.models.PublicationModel;
 import android.content.Intent;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import edu.atelier.technique.ui.Pages.InfoPage;
 import edu.atelier.technique.ui.Pages.InterestPage;
@@ -44,6 +47,8 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        Location.getInstance().setUp(this);
+
         this.filterLayout = (LinearLayout) findViewById(R.id.filterLayout);
         this.filterButton = (Button) this.findViewById(R.id.details_filters);
         this.seekBar = (SeekBar) this.findViewById(R.id.seekBar);
@@ -66,14 +71,14 @@ public class HomePage extends AppCompatActivity {
         for(ImageModel element  : list){
             publicationList.add(new PublicationModel(element));
         }
-        HomePageAdapter myAdapter = new HomePageAdapter(this.getApplicationContext(), R.layout.component_post, publicationList, this);
+        HomePageAdapter myAdapter = new HomePageAdapter(this.getApplicationContext(), R.layout.component_post_add, publicationList, this);
         simpleList.setAdapter(myAdapter);
     }
 
     private void searchFilters(){
         String textInput = ((TextView) this.findViewById(R.id.input_filters)).getText().toString();
         String choice = ((Spinner) this.findViewById(R.id.spinner)).getSelectedItem().toString();
-        String radius = ((TextView) findViewById(R.id.km)).getText().toString();
+        String radius = ((TextView) findViewById(R.id.km)).getText().toString().split(" ")[0];
         if (textInput.equals("") && Integer.parseInt(radius) == 0) {
             GetAllImagesUseCase getImages = new GetAllImagesUseCase();
             Runnable runnable = ()->{
@@ -83,8 +88,14 @@ public class HomePage extends AppCompatActivity {
             Executors.newSingleThreadExecutor().execute( runnable );
         } else if (textInput.equals("") && Integer.parseInt(radius) != 0){
             GetAllImagesWithRadiusUseCase getImages = new GetAllImagesWithRadiusUseCase(this.radius);
+            LatLng latlng = Location.getInstance().getCurrentLocation();
+            if(latlng == null){
+                Toast toast = Toast.makeText(this, "Impossible de récupérer votre localisation", Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+            }
             Runnable runnable = ()->{
-                getImages.doInBackGround();
+                getImages.doInBackGround(latlng);
                 runOnUiThread( ()-> loadAdapter(getImages.itemList));
             };
             Executors.newSingleThreadExecutor().execute( runnable );

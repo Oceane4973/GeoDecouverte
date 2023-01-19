@@ -38,8 +38,7 @@ public class GetAllImagesWithRadiusUseCase {
         this.radius = radius;
     }
 
-    public void doInBackGround() {
-        LatLng latlng = Location.getInstance().getCurrentLocation();
+    public void doInBackGround(LatLng latlng) {
         String jsonStr = webService.makeServiceCall(this.url+ "/" + latlng.latitude + "/" + latlng.longitude + "/" + this.radius);
         Log.d(TAG, jsonStr);
 

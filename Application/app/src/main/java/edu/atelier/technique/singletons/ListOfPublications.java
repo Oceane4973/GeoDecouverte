@@ -48,17 +48,14 @@ public class ListOfPublications {
 
     private ListOfPublications(){
         this.list = new ArrayList<PublicationModel>();
-        this.list.add(
-                new PublicationModel(
-                        new ImageModel(
-                                1,
-                                "city",
-                                "country",
-                                "url",
-                                "date"
-                        )
-                )
-        );
+    }
+
+    public void addPublication(PublicationModel publication){
+
+    }
+
+    public void subPublication(PublicationModel publication){
+
     }
 
     public ArrayList<PublicationModel> getList(){
