@@ -159,8 +159,26 @@ public class PicturePage extends AppCompatActivity implements ImageAnalysis.Anal
         }
     }
 
+/*
+    bCapture.setOnClickListener(new View.OnClickListener()
+    {
+        @Override
+        public void onClick(View view)
+        {
+            imageCapture.takePicture(new ImageCapture.OnImageCapturedListener()
+            {
+                @Override
+                public void onCaptureSuccess(ImageProxy image, int rotationDegrees)
+                {
+                    ImageView imageView = findViewById(R.id.imageView);
+                    imageView.setImageBitmap(imageProxyToBitmap(image));
+                    imageView.setRotation(rotationDegrees);
 
-
+                    image.close();
+                }
+            });
+        }
+    });*/
     private void capturePhoto() {
         long timestamp = System.currentTimeMillis();
 
