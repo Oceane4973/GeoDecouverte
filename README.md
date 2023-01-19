@@ -12,4 +12,4 @@
 
 ## Lien vers le GitHub de l'API Rest
 
-[API_Atelier_Technique](https://github.com/Oceane4973/API_atelier_technique.git)
+[API_Atelier_Technique](https://github.com/ValentinMontel/API2_Atelier_technique.git)

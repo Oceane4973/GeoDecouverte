@@ -13,7 +13,6 @@ import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LifecycleOwner;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -21,25 +20,24 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
-
 import com.google.common.util.concurrent.ListenableFuture;
-
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
-
 import edu.atelier.technique.HomePage;
 import edu.atelier.technique.R;
+import edu.atelier.technique.singletons.ListOfPermissions;
 
 public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.Analyzer, View.OnClickListener {
+    private static final int CAMERA_PERMISSION = 1000;
+    private static final int LOCATION_PERMISSION = 2000;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
 
     PreviewView previewView;
     private ImageCapture imageCapture;
-    //private VideoCapture videoCapture;
+    // private VideoCapture videoCapture;
 
     private ImageButton bCapture;
 
@@ -48,16 +46,19 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picpic);
 
-        if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, 100);
+        if (!ListOfPermissions.getInstance().getCameraPermission()) {
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, CAMERA_PERMISSION);
+        } else {
+            if (!ListOfPermissions.getInstance().getlocationPermission()) {
+                ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.ACCESS_COARSE_LOCATION },
+                        LOCATION_PERMISSION);
+            }
         }
 
         previewView = findViewById(R.id.previewView);
         bCapture = findViewById(R.id.bPicCapture);
 
-
         bCapture.setOnClickListener(this);
-
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(this);
         cameraProviderFuture.addListener(() -> {
@@ -68,7 +69,6 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
                 e.printStackTrace();
             }
         }, getExecutor());
-
     }
 
     Executor getExecutor() {
@@ -90,7 +90,6 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
                 .setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
                 .build();
 
-
         // Image analysis use case
         ImageAnalysis imageAnalysis = new ImageAnalysis.Builder()
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
@@ -98,7 +97,7 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
 
         imageAnalysis.setAnalyzer(getExecutor(), this);
 
-        //bind to lifecycle:
+        // bind to lifecycle:
         cameraProvider.bindToLifecycle((LifecycleOwner) this, cameraSelector, preview, imageCapture);
     }
 
@@ -118,8 +117,6 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         }
     }
 
-
-
     private void capturePhoto() {
         long timestamp = System.currentTimeMillis();
 
@@ -127,27 +124,55 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, timestamp);
         contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
 
-
-
         imageCapture.takePicture(
                 new ImageCapture.OutputFileOptions.Builder(
                         getContentResolver(),
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                        contentValues
-                ).build(),
+                        contentValues).build(),
                 getExecutor(),
                 new ImageCapture.OnImageSavedCallback() {
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                        Toast.makeText(Picpic_activity.this, "Photo has been saved successfully.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Picpic_activity.this, "Photo has been saved successfully.", Toast.LENGTH_SHORT)
+                                .show();
                     }
 
                     @Override
                     public void onError(@NonNull ImageCaptureException exception) {
-                        Toast.makeText(Picpic_activity.this, "Error saving photo: " + exception.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Picpic_activity.this, "Error saving photo: " + exception.getMessage(),
+                                Toast.LENGTH_SHORT).show();
                     }
-                }
-        );
+                });
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case CAMERA_PERMISSION:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    ListOfPermissions.getInstance().setCameraPermission(true);
+                    if (!ListOfPermissions.getInstance().getlocationPermission()) {
+                        ActivityCompat.requestPermissions(this,
+                                new String[] { Manifest.permission.ACCESS_COARSE_LOCATION }, LOCATION_PERMISSION);
+                    }
+                } else {
+                    ListOfPermissions.getInstance().setCameraPermission(false);
+                    startActivity(new Intent(getApplicationContext(), HomePage.class));
+                }
+                break;
+
+            case LOCATION_PERMISSION:
+                if ((grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    ListOfPermissions.getInstance().setlocalisationPermission(true);
+                } else {
+                    ListOfPermissions.getInstance().setlocalisationPermission(false);
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 }
