@@ -35,4 +35,6 @@
     </string-array>
     <string name="ville">Ville</string>
     <string name="pays">Pays</string>
+    <string name="subInListOfPublication">Publication supprimée de la liste des publications enregistrées</string>
+    <string name="addInListOfPublication">Publication ajoutée à la liste des publications enregistrées</string>
 </resources>

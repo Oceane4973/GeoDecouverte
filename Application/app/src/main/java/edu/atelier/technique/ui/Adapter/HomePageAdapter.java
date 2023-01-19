@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
@@ -63,9 +64,13 @@ public class HomePageAdapter extends ArrayAdapter {
             if(savedButton.getDrawable() == isSaved){
                 ListOfPublications.getInstance().addPublication(publicationList.get(position));
                 savedButton.setImageDrawable(isNotSaved);
+                Toast toast = Toast.makeText(this.activity.getApplicationContext(), R.string.subInListOfPublication, Toast.LENGTH_SHORT);
+                toast.show();
             } else {
                 savedButton.setImageDrawable(isSaved);
                 ListOfPublications.getInstance().subPublication(publicationList.get(position));
+                Toast toast = Toast.makeText(this.activity.getApplicationContext(), R.string.addInListOfPublication, Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
 

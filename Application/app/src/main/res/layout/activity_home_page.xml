@@ -59,7 +59,7 @@
         android:divider="@color/white"
         android:dividerHeight="20dp"
         android:layout_marginTop="20dp"
-        android:paddingBottom="80dp" />
+        android:paddingBottom="100dp" />
 
 
     <LinearLayout
