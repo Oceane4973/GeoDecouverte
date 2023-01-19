@@ -30,14 +30,20 @@ import edu.atelier.technique.models.PublicationModel;
 import edu.atelier.technique.notifications.Notifications;
 
 /** EXEMPLE D'APPEL :
- *  ListOfPublications.getInstance().writeToFile(this);
- *  ListOfPublications.getInstance().readFromFile(this);
+ *  ListOfPublications.getInstance().writeToFile();
+ *  ListOfPublications.getInstance().readFromFile();
+ *  ListOfPublications.getInstance().publicationIsSaved(publicationModel);
+ *
+ * NOTE :
+ * Pensez à initisialiser le singleton dans la première activité avec : ListOfPublications.getInstance().setUp(this);
 */
 
 public class ListOfPublications {
 
     private String FILE_NAME = "LIST_OF_PUBLICATIONS.json";
     private ArrayList<PublicationModel> list;
+
+    private Context context;
 
     private static ListOfPublications INSTANCE;
 
@@ -46,16 +52,33 @@ public class ListOfPublications {
         return INSTANCE;
     }
 
+    public void setUp(Context context){
+        this.context = context;
+        this.readFromFile();
+        //this.writeToFile();
+    }
+
     private ListOfPublications(){
         this.list = new ArrayList<PublicationModel>();
     }
 
-    public void addPublication(PublicationModel publication){
-
+    public Boolean addOrDeletePublication(PublicationModel publication){
+        if(publication.isFavoris()){
+            this.list.remove(publication);
+        }else{
+            this.list.add(publication);
+        }
+        writeToFile();
+        return !publication.isFavoris();
     }
 
-    public void subPublication(PublicationModel publication){
-
+    public Boolean publicationIsSaved(PublicationModel publicationModel){
+        for(PublicationModel publication : this.list){
+            if (publication.getImage().getId() == publicationModel.getImage().getId()){
+                return true;
+            }
+        }
+        return false;
     }
 
     public ArrayList<PublicationModel> getList(){
@@ -70,19 +93,18 @@ public class ListOfPublications {
         return json;
     }
 
-    public void writeToFile(Context context) {
+    public void writeToFile() {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE));
             outputStreamWriter.write(JSONList().toString());
             outputStreamWriter.close();
-            Log.d("AtelierTechnique","Fichier crée : " + JSONList().toString());
         }
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
     }
 
-    public JSONArray readFromFile(Context context) {
+    private JSONArray readFromFile() {
 
         this.list = new ArrayList<PublicationModel>();
         JSONArray publications = null;
@@ -101,15 +123,17 @@ public class ListOfPublications {
                 for (int i = 0; i < publications.length(); i++) {
                     JSONObject publication = publications.getJSONObject(i);
                     this.list.add(
-                            new PublicationModel(new ImageModel(
-                                    Integer.parseInt(publication.getString("id")),
-                                    publication.getString("city"),
-                                    publication.getString("country"),
-                                    publication.getString("url"),
-                                    publication.getString("date")
-                            )));
+                            new PublicationModel(
+                                    new ImageModel(
+                                        Integer.parseInt(publication.getString("id")),
+                                        publication.getString("city"),
+                                        publication.getString("country"),
+                                        publication.getString("filename"),
+                                        publication.getString("date")
+                                    )
+                            )
+                    );
                 }
-                Log.d("AtelierTechnique", "fichier chargé (JSON): " + this.JSONList());
                 inputStream.close();
             }
         }

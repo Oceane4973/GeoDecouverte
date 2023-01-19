@@ -40,7 +40,6 @@ public class GetAllImagesWithRadiusUseCase {
 
     public void doInBackGround(LatLng latlng) {
         String jsonStr = webService.makeServiceCall(this.url+ "/" + latlng.latitude + "/" + latlng.longitude + "/" + this.radius);
-        Log.d(TAG, jsonStr);
 
         this.itemList = new ArrayList<ImageModel>();
 
@@ -66,6 +65,5 @@ public class GetAllImagesWithRadiusUseCase {
         } else {
             Log.e(TAG, "Problème de connexion ");
         }
-        Log.d(TAG, "images =" + itemList);
     }
 }

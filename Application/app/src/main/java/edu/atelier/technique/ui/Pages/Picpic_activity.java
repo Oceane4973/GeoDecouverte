@@ -49,10 +49,7 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
         setContentView(R.layout.activity_picpic);
 
         if (ContextCompat.checkSelfPermission(this.getApplicationContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
-            Log.d("Camera Permission","Denied");
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA}, 100);
-        }else{
-            Log.d("Camera Permission","Granted");
         }
 
         previewView = findViewById(R.id.previewView);
@@ -108,7 +105,6 @@ public class Picpic_activity extends AppCompatActivity implements ImageAnalysis.
     @Override
     public void analyze(@NonNull ImageProxy image) {
         // image processing here for the current frame
-        Log.d("TAG", "analyze: got the frame at: " + image.getImageInfo().getTimestamp());
         image.close();
     }
 

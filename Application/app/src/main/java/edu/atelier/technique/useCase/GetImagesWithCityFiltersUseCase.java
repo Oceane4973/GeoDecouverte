@@ -39,7 +39,6 @@ public class GetImagesWithCityFiltersUseCase {
 
     public void doInBackGround() {
         String jsonStr = webService.makeServiceCall(this.url + "/" + cityFilters + "/" + this.radius);
-        Log.d(TAG, jsonStr);
 
         this.itemList = new ArrayList<ImageModel>();
 
@@ -65,6 +64,5 @@ public class GetImagesWithCityFiltersUseCase {
         } else {
             Log.e(TAG, "Problème de connexion ");
         }
-        Log.d(TAG, "images =" + itemList);
     }
 }

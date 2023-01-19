@@ -9,13 +9,14 @@ import org.json.JSONObject;
 public class ImageModel {
 
     private int id;
-    public String city, country, url, date;
+    public String city, country, url, date, filename;
     public int image;
 
     public ImageModel(int id, String city, String country, String filename, String date) {
         this.id = id;
         this.city = city;
         this.country = country;
+        this.filename = filename;
         this.url = "https://api-2-atelier-technique-geodecouverte.vercel.app/image/" + filename + ".png";
         this.date = date;
     }
@@ -46,7 +47,7 @@ public class ImageModel {
             json.put("id", this.id);
             json.put("city", this.city);
             json.put("country", this.country);
-            json.put("url", this.url);
+            json.put("filename", this.filename);
             json.put("date", this.date);
         }
         catch (JSONException e) {
@@ -55,3 +56,4 @@ public class ImageModel {
         return json;
     }
 }
+

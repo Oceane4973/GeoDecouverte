@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 import edu.atelier.technique.models.ImageModel;
+import edu.atelier.technique.singletons.ListOfPublications;
 import edu.atelier.technique.singletons.Location;
 import edu.atelier.technique.ui.Adapter.HomePageAdapter;
 import edu.atelier.technique.models.PublicationModel;
@@ -48,20 +49,14 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         Location.getInstance().setUp(this);
+        ListOfPublications.getInstance().setUp(this);
 
         this.filterLayout = (LinearLayout) findViewById(R.id.filterLayout);
         this.filterButton = (Button) this.findViewById(R.id.details_filters);
         this.seekBar = (SeekBar) this.findViewById(R.id.seekBar);
-
         this.simpleList = (ListView) findViewById(R.id.homePageListView);
 
-        GetAllImagesUseCase getImages = new GetAllImagesUseCase();
-        Runnable runnable = ()->{
-            getImages.doInBackGround();
-            runOnUiThread( ()-> loadAdapter(getImages.itemList));
-        };
-        Executors.newSingleThreadExecutor().execute( runnable );
-
+        searchFilters();
         setUpButton();
         setUpSeekBar();
     }
@@ -90,7 +85,7 @@ public class HomePage extends AppCompatActivity {
             GetAllImagesWithRadiusUseCase getImages = new GetAllImagesWithRadiusUseCase(this.radius);
             LatLng latlng = Location.getInstance().getCurrentLocation();
             if(latlng == null){
-                Toast toast = Toast.makeText(this, "Impossible de récupérer votre localisation", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this, R.string.LocationNotFoundText, Toast.LENGTH_SHORT);
                 toast.show();
                 return;
             }
@@ -127,6 +122,9 @@ public class HomePage extends AppCompatActivity {
             setFiltersVisibility();
         });
         this.findViewById(R.id.dontsearch).setOnClickListener( click -> {
+            ((TextView) this.findViewById(R.id.input_filters)).setText("");
+            ((TextView) findViewById(R.id.km)).setText(R.string.kilometres);
+            searchFilters();
             setFiltersVisibility();
         });
         this.findViewById(R.id.search).setOnClickListener( click -> {
@@ -145,7 +143,7 @@ public class HomePage extends AppCompatActivity {
         this.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,boolean fromUser) {
-                ((TextView) findViewById(R.id.km)).setText(String.valueOf(progress) + " km");
+                ((TextView) findViewById(R.id.km)).setText(progress + " km");
                 radius = Integer.parseInt(String.valueOf(progress));
             }
             @Override

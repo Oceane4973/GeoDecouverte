@@ -23,7 +23,7 @@
     <string name="AddPublication_avertissement_paragraphe">Lorsque vous partagez ou publiez du contenu protégé par des droits de propriété intellectuelle (comme des photos) sur notre Service ou en rapport avec ce dernier, vous nous accordez une licence non exclusive.</string>
     <string name="AddPublication_avertissement_link"><u>Voir les conditions d\'utilisation</u></string>
     <string name="notif_message">Votre publication à bien été prise en compte</string>
-    <string name="input_text_country_or_city">Entrez un nom...</string>
+    <string name="input_text_country_or_city">Entrez un nom…</string>
     <string name="annuler">Annuler</string>
     <string name="publier">Publier</string>
     <string name="rechercher">Rechercher</string>
@@ -37,4 +37,5 @@
     <string name="pays">Pays</string>
     <string name="subInListOfPublication">Publication supprimée de la liste des publications enregistrées</string>
     <string name="addInListOfPublication">Publication ajoutée à la liste des publications enregistrées</string>
+    <string name="LocationNotFoundText">Impossible de récupérer votre localisation</string>
 </resources>

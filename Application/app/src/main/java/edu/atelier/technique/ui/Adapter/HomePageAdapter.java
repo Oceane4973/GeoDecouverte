@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,25 +58,35 @@ public class HomePageAdapter extends ArrayAdapter {
         ImageView imageView = (ImageView) v.findViewById(R.id.imageView);
         ImageView savedButton = (ImageView) v.findViewById(R.id.ic_save);
 
+        if(ListOfPublications.getInstance().publicationIsSaved(publicationList.get(position))){
+            publicationList.get(position).setIsFavoris(true);
+        }
+
         city_name.setText(publicationList.get(position).getImage().getCity());
         country_name.setText(publicationList.get(position).getImage().getCountry());
 
         savedButton.setOnClickListener( click -> {
-            if(savedButton.getDrawable() == isSaved){
-                ListOfPublications.getInstance().addPublication(publicationList.get(position));
-                savedButton.setImageDrawable(isNotSaved);
-                Toast toast = Toast.makeText(this.activity.getApplicationContext(), R.string.subInListOfPublication, Toast.LENGTH_SHORT);
-                toast.show();
-            } else {
+            //Change son etat
+            publicationList.get(position).setIsFavoris(ListOfPublications.getInstance().addOrDeletePublication(publicationList.get(position)));
+
+            Toast toast;
+            if(publicationList.get(position).isFavoris()){
                 savedButton.setImageDrawable(isSaved);
-                ListOfPublications.getInstance().subPublication(publicationList.get(position));
-                Toast toast = Toast.makeText(this.activity.getApplicationContext(), R.string.addInListOfPublication, Toast.LENGTH_SHORT);
-                toast.show();
+                toast = Toast.makeText(this.activity.getApplicationContext(), R.string.addInListOfPublication, Toast.LENGTH_SHORT);
+            }else{
+                savedButton.setImageDrawable(isNotSaved);
+                toast = Toast.makeText(this.activity.getApplicationContext(), R.string.subInListOfPublication, Toast.LENGTH_SHORT);
             }
+            toast.show();
         });
 
         ((ImageView) v.findViewById(R.id.ic_gps)).setImageResource(R.drawable.ic_gps_location);
-        ((ImageView) v.findViewById(R.id.ic_save)).setImageResource(R.drawable.ic_bookmark_outline);
+
+        if (publicationList.get(position).isFavoris()) {
+            ((ImageView) v.findViewById(R.id.ic_save)).setImageResource(R.drawable.ic_bookmark_fill);
+        } else {
+            ((ImageView) v.findViewById(R.id.ic_save)).setImageResource(R.drawable.ic_bookmark_outline);
+        }
         ImageAsyncService getImage = new ImageAsyncService(publicationList.get(position).getImage().getUrl());
         Runnable runnable = () -> {
             getImage.doInBackGround();

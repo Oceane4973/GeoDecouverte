@@ -45,7 +45,6 @@ public class APIService {
         try {
             while ((line = reader.readLine()) != null) {
                 stringBuilder.append(line).append('\n');
-                Log.d(TAG,line);
             }
         }
         catch (IOException e) {  e.printStackTrace();   }

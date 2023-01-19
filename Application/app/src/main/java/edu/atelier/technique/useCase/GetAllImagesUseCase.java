@@ -34,7 +34,6 @@ public class GetAllImagesUseCase{
 
     public void doInBackGround() {
         String jsonStr = webService.makeServiceCall(this.url);
-        Log.d(TAG, jsonStr);
 
         this.itemList = new ArrayList<ImageModel>();
 
@@ -60,6 +59,5 @@ public class GetAllImagesUseCase{
         } else {
             Log.e(TAG, "Problème de connexion ");
         }
-        Log.d(TAG, "images =" + itemList);
     }
 }

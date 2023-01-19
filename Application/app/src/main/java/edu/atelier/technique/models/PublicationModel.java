@@ -12,6 +12,10 @@ public class PublicationModel {
         this.isFavoris = false;
     }
 
+    public void setIsFavoris(Boolean bool){
+        this.isFavoris = bool;
+    }
+
     public ImageModel getImage() {
         return myImage;
     }
