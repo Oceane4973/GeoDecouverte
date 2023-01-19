@@ -32,7 +32,8 @@
     <ImageButton
         android:id="@+id/imageButtonBookMark"
         android:layout_width="40dp"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
+        android:paddingTop="15dp"
         android:layout_marginTop="20dp"
         android:background="@color/transparent"
         app:layout_constraintEnd_toStartOf="@+id/imageButtonAddPublication"
