@@ -1,44 +1,54 @@
 package edu.atelier.technique.useCase;
 
 import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.services.APIService;
 
-/** EXEMPLE D'APPEL :
-private void executeInThread(){
-     GetImagesWithCityFiltersUseCase getImagesWithFilters = new GetImagesWithCityFiltersUseCase(<City>);
-     Runnable runnable = getImagesWithFilters::doInBackGround;
-     Executors.newSingleThreadExecutor().execute( runnable );
-}
- **/
-
+/**
+ * Cette classe permet de faire appel à notre service API [ APIService ] selon le cas d'utilisation :
+ * "récupérer toutes les images existantes dans la base de données selon une nom de ville et un rayon prédéfinis"
+ *
+ * EXEMPLE D'APPEL :
+ *  GetImagesWithCityFiltersUseCase getImagesWithFilters = new GetImagesWithCityFiltersUseCase(city, radius);
+ *  Runnable runnable = getImages::doInBackGround;
+ *  Executors.newSingleThreadExecutor().execute( runnable );
+ *
+ */
 public class GetImagesWithCityFiltersUseCase {
+
 
     private String TAG = "AtelierTechnique";
     private String cityFilters;
     private String url = "/images/city_filter";
-
+    public List<ImageModel> itemList;
+    private int radius;
     private APIService webService;
 
-    public GetImagesWithCityFiltersUseCase(String cityFilters){
+
+    /**
+     * Constructeur
+     * @param cityFilters
+     * @param radius
+     */
+    public GetImagesWithCityFiltersUseCase(String cityFilters, int radius){
         super();
         this.cityFilters = cityFilters;
         this.webService = new APIService();
+        this.radius = radius;
     }
 
+    /**
+     * Declenche la requête HTTP
+     */
     public void doInBackGround() {
-        String jsonStr = webService.makeServiceCall(this.url + "/" + cityFilters);
-        Log.d(TAG, jsonStr);
+        String jsonStr = webService.makeServiceCall(this.url + "/" + cityFilters + "/" + this.radius);
 
-        List<ImageModel> itemList = new ArrayList<ImageModel>();
+        this.itemList = new ArrayList<ImageModel>();
 
         if (jsonStr != null) {
             try {
@@ -51,7 +61,7 @@ public class GetImagesWithCityFiltersUseCase {
                                     Integer.parseInt(jsonObject.getString("id")),
                                     jsonObject.getString("city"),
                                     jsonObject.getString("country"),
-                                    jsonObject.getString("url"),
+                                    jsonObject.getString("filename"),
                                     jsonObject.getString("date")
                             )
                     );
@@ -62,6 +72,5 @@ public class GetImagesWithCityFiltersUseCase {
         } else {
             Log.e(TAG, "Problème de connexion ");
         }
-        Log.d(TAG, "images =" + itemList);
     }
 }

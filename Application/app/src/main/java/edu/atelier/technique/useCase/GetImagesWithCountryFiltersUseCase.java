@@ -12,33 +12,48 @@ import java.util.List;
 import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.services.APIService;
 
-/** EXEMPLE D'APPEL :
-private void executeInThread(){
-     GetImagesWithCountryFiltersUseCase getImagesWithFilters = new GetImagesWithCountryFiltersUseCase(<Country>);
-     Runnable runnable = getImagesWithFilters::doInBackGround;
-     Executors.newSingleThreadExecutor().execute( runnable );
-}
- **/
 
+
+/**
+ * Cette classe permet de faire appel à notre service API [ APIService ] selon le cas d'utilisation :
+ * "récupérer toutes les images existantes dans la base de données selon une nom de pays et un rayon prédéfinis"
+ *
+ * EXEMPLE D'APPEL :
+ *  GetImagesWithCountryFiltersUseCase getImagesWithFilters = new GetImagesWithCountryFiltersUseCase(country, radius);
+ *  Runnable runnable = getImages::doInBackGround;
+ *  Executors.newSingleThreadExecutor().execute( runnable );
+ *
+ */
 public class GetImagesWithCountryFiltersUseCase {
+
 
     private String TAG = "AtelierTechnique";
     private String countryFilters;
     private String url = "/images/country_filter";
-
+    public List<ImageModel> itemList;
+    private int radius;
     private APIService webService;
 
-    public GetImagesWithCountryFiltersUseCase(String countryFilters){
+
+    /**
+     * Constructeur
+     * @param countryFilters
+     * @param radius
+     */
+    public GetImagesWithCountryFiltersUseCase(String countryFilters, int radius){
         super();
         this.countryFilters = countryFilters;
         this.webService = new APIService();
+        this.radius = radius;
     }
 
+    /**
+     * Declenche la requête HTTP
+     */
     public void doInBackGround() {
-        String jsonStr = webService.makeServiceCall(this.url + "/" + countryFilters);
-        Log.d(TAG, jsonStr);
+        String jsonStr = webService.makeServiceCall(this.url + "/" + countryFilters+ "/" + radius);
 
-        List<ImageModel> itemList = new ArrayList<ImageModel>();
+        this.itemList = new ArrayList<ImageModel>();
 
         if (jsonStr != null) {
             try {
@@ -51,7 +66,7 @@ public class GetImagesWithCountryFiltersUseCase {
                                     Integer.parseInt(jsonObject.getString("id")),
                                     jsonObject.getString("city"),
                                     jsonObject.getString("country"),
-                                    jsonObject.getString("url"),
+                                    jsonObject.getString("filename"),
                                     jsonObject.getString("date")
                             )
                     );
@@ -62,6 +77,5 @@ public class GetImagesWithCountryFiltersUseCase {
         } else {
             Log.e(TAG, "Problème de connexion ");
         }
-        Log.d(TAG, "images =" + itemList);
     }
 }
