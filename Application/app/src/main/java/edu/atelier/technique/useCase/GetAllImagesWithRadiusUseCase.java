@@ -1,6 +1,7 @@
 package edu.atelier.technique.useCase;
 
 import android.util.Log;
+import com.google.android.gms.maps.model.LatLng;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,36 +12,40 @@ import edu.atelier.technique.services.APIService;
 
 /**
  * Cette classe permet de faire appel à notre service API [ APIService ] selon le cas d'utilisation :
- * "récupérer toutes les images existantes dans la base de données"
+ * "récupérer toutes les images existantes dans la base de données autour de l'utilisateur selon un rayon prédéfinis"
  *
  * EXEMPLE D'APPEL :
- *  GetAllImagesUseCase getImages = new GetAllImagesUseCase();
+ *  GetAllImagesWithRadiusUseCase getImages = new GetAllImagesWithRadiusUseCase(radius);
  *  Runnable runnable = getImages::doInBackGround;
  *  Executors.newSingleThreadExecutor().execute( runnable );
  *
  */
-public class GetAllImagesUseCase{
+public class GetAllImagesWithRadiusUseCase {
 
 
     private String TAG = "AtelierTechnique";
-    private String url = "/images/all";
+    private String url = "/images/radius_filter";
     public List<ImageModel> itemList;
+    private int radius;
     private APIService webService;
 
 
     /**
      * Constructeur
+     * @param radius
      */
-    public GetAllImagesUseCase(){
+    public GetAllImagesWithRadiusUseCase(int radius){
         super();
         this.webService = new APIService();
+        this.radius = radius;
     }
 
     /**
-     * Declenche la requète HTTP
+     * Declenche la requête HTTP
+     * @param latlng
      */
-    public void doInBackGround() {
-        String jsonStr = webService.makeServiceCall(this.url);
+    public void doInBackGround(LatLng latlng) {
+        String jsonStr = webService.makeServiceCall(this.url+ "/" + latlng.latitude + "/" + latlng.longitude + "/" + this.radius);
 
         this.itemList = new ArrayList<ImageModel>();
 

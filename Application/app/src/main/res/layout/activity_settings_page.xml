@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Pages.InfoPage">
+
+    <!--TOOLBAR-->
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:background="@color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_to_left_smooth"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SettingsPage_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@+id/back"
+        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintTop_toTopOf="@+id/back"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"/>
+
+    <!--TEXT-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back"
+        android:layout_marginHorizontal="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+
+            <!--INTRODUCTION-->
+            <TextView
+                android:id="@+id/InfoPage_title_introduction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/SettingsPage_introduction"
+                android:textStyle="italic"/>
+
+            <!--PERMISSIONS-->
+            <TextView
+                android:id="@+id/InfoPage_title_service_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/SettingsPage_service_title"
+                android:layout_marginTop="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="16dp"/>
+
+            <!--SWITCH BUTTON-->
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/CameraSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/cameraSwitch"
+                android:layout_marginTop="20dp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/LocationSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/locationSwitch" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/ExternalStorageSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="@string/externalStorageSwitch" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

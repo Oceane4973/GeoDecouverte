@@ -11,13 +11,26 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+/**
+ * Cette classe permet de stocké le service de l'API que nous appelons pour chaque requette HTTP
+ */
 public class APIService {
 
-    private String TAG = "AtelierTechnique";
-    private String URL = "https://api-atelier-technique.vercel.app";
 
+    private String TAG = "AtelierTechnique";
+    private String URL = "https://api-2-atelier-technique-geodecouverte.vercel.app";
+
+
+    /**
+     * Constructeur
+     */
     public APIService(){}
 
+    /**
+     * Appel l'API Rest avec une route prédéfinie
+     * @param root
+     * @return la reponse HTTP sous forme de [ String ]
+     */
     public String makeServiceCall(String root) {
         String response = null;
         try {
@@ -38,6 +51,11 @@ public class APIService {
         return response;
     }
 
+    /**
+     * Convertit le flux d'entrée [ InputStream ] en [ String ]
+     * @param inputStream
+     * @return le contenu de la reponse HTTP sous forme de [ String ]
+     */
     private String convertStreamToString(InputStream inputStream) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         StringBuilder stringBuilder = new StringBuilder();
@@ -45,7 +63,6 @@ public class APIService {
         try {
             while ((line = reader.readLine()) != null) {
                 stringBuilder.append(line).append('\n');
-                Log.d(TAG,line);
             }
         }
         catch (IOException e) {  e.printStackTrace();   }

@@ -2,25 +2,49 @@ package edu.atelier.technique.models;
 
 import org.json.JSONObject;
 
+/**
+ * Cette classe permet de stocker les données relative à une publication. Et elle fait référence à une instance de ImageModel.
+ */
 public class PublicationModel {
-    private int id;
-    private ImageModel myImage;
+
+
+    private ImageModel image;
     private boolean isFavoris;
 
-    public PublicationModel(ImageModel _myImage) {
-        this.myImage = _myImage;
+
+    /**
+     * Constructeur
+     * Création a partir d'un [ ImageModel ]
+     * @param _image
+     */
+    public PublicationModel(ImageModel _image) {
+        this.image = _image;
         this.isFavoris = false;
     }
 
-    public ImageModel getImage() {
-        return myImage;
+    /**
+     * Modifie l'état de mise en favoris
+     * @param bool
+     */
+    public void setIsFavoris(boolean bool){
+        this.isFavoris = bool;
     }
 
-    public boolean isFavoris() {
-        return isFavoris;
-    }
+    /**
+     * Récupère l'image [ ImageModel ] 
+     * @return image
+     */
+    public ImageModel getImage() { return image; }
 
-    public JSONObject toJson() {
-        return myImage.toJson();
-    }
+    /**
+     * Récupère l'etat de mise en favoris'
+     * @return isFavoris
+     */
+    public boolean isFavoris() { return isFavoris; }
+
+    /**
+     * Récupère le fichier JSON représentant les données de sa donnée membre ImageModel
+     * @return JSONObject
+     */
+    public JSONObject toJson() { return image.toJson();}
 }
