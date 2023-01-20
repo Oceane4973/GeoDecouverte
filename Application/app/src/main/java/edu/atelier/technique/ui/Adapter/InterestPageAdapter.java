@@ -46,13 +46,17 @@ public class InterestPageAdapter extends ArrayAdapter {
 
         city_name.setText(publicationList.get(position).getImage().getCity());
 
-        ImageAsyncService getImage = new ImageAsyncService(publicationList.get(position).getImage().getUrl());
-
-        Runnable runnable = () -> {
-            getImage.doInBackGround();
-            this.activity.runOnUiThread(() -> imageView.setImageBitmap(getImage.getItemResult()));
-        };
-        Executors.newSingleThreadExecutor().execute(runnable);
+        if(publicationList.get(position).getImage().bitmap == null) {
+            ImageAsyncService getImage = new ImageAsyncService(publicationList.get(position).getImage().getUrl());
+            Runnable runnable = () -> {
+                getImage.doInBackGround();
+                this.activity.runOnUiThread(() -> {
+                    publicationList.get(position).getImage().bitmap = getImage.getItemResult();
+                    imageView.setImageBitmap(publicationList.get(position).getImage().bitmap);
+                });
+            };
+            Executors.newSingleThreadExecutor().execute(runnable);
+        } else { imageView.setImageBitmap(publicationList.get(position).getImage().bitmap); }
 
         return v;
     }

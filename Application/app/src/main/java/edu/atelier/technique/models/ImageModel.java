@@ -1,6 +1,7 @@
 package edu.atelier.technique.models;
 
 import android.Manifest;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -10,6 +11,7 @@ public class ImageModel {
 
     private int id;
     public String city, country, url, date, filename;
+    public Bitmap bitmap;
     public int image;
 
     public ImageModel(int id, String city, String country, String filename, String date) {

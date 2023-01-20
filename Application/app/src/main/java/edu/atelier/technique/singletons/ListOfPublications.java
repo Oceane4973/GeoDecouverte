@@ -98,13 +98,14 @@ public class ListOfPublications {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE));
             outputStreamWriter.write(JSONList().toString());
             outputStreamWriter.close();
+            Log.d("AtelierTechnique", "ecriture : " + JSONList().toString());
         }
         catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
     }
 
-    private JSONArray readFromFile() {
+    private void readFromFile() {
 
         this.list = new ArrayList<PublicationModel>();
         JSONArray publications = null;
@@ -134,6 +135,7 @@ public class ListOfPublications {
                             )
                     );
                 }
+                Log.d("AtelierTechnique", "lecture : " + JSONList().toString());
                 inputStream.close();
             }
         }
@@ -144,6 +146,5 @@ public class ListOfPublications {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return publications;
     }
 }

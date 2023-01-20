@@ -87,12 +87,18 @@ public class HomePageAdapter extends ArrayAdapter {
         } else {
             ((ImageView) v.findViewById(R.id.ic_save)).setImageResource(R.drawable.ic_bookmark_outline);
         }
-        ImageAsyncService getImage = new ImageAsyncService(publicationList.get(position).getImage().getUrl());
-        Runnable runnable = () -> {
-            getImage.doInBackGround();
-            this.activity.runOnUiThread(() -> imageView.setImageBitmap(getImage.getItemResult()));
-        };
-        Executors.newSingleThreadExecutor().execute(runnable);
+
+        if(publicationList.get(position).getImage().bitmap == null) {
+            ImageAsyncService getImage = new ImageAsyncService(publicationList.get(position).getImage().getUrl());
+            Runnable runnable = () -> {
+                getImage.doInBackGround();
+                this.activity.runOnUiThread(() -> {
+                    publicationList.get(position).getImage().bitmap = getImage.getItemResult();
+                    imageView.setImageBitmap(publicationList.get(position).getImage().bitmap);
+                });
+            };
+            Executors.newSingleThreadExecutor().execute(runnable);
+        } else { imageView.setImageBitmap(publicationList.get(position).getImage().bitmap); }
 
         return v;
     }
