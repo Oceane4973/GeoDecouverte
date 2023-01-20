@@ -24,7 +24,7 @@ public class ValidatePicPage extends AppCompatActivity {
 
         imgValidate = findViewById(R.id.imgValidate);
 
-        imgValidate.setImageBitmap(ImagePostData.getInstance().getBitMap());
+        imgValidate.setImageBitmap(ImagePostData.getInstance().getBitMap());  //est sensé afficher l'image
 
 
         bValidate = findViewById(R.id.bValidate);

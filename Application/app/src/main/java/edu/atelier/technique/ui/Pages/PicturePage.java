@@ -188,10 +188,10 @@ public class PicturePage extends AppCompatActivity implements ImageAnalysis.Anal
 
 
         Log.d("===========================================","====================");
-        Log.d("cccc", getContentResolver().toString());
-        Log.d("dddd", MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString());
-        Log.d("eeee", contentValues.toString());
-        Log.d("eeee", contentValues.get("_display_name").toString());
+        Log.d("content resolv", getContentResolver().toString());
+        Log.d("media store", MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString());
+        Log.d("content values all", contentValues.toString());
+        Log.d("content values disp name", contentValues.get("_display_name").toString());
         Log.d("===========================================","====================");
 
         imageCapture.takePicture(
@@ -204,11 +204,10 @@ public class PicturePage extends AppCompatActivity implements ImageAnalysis.Anal
                 getExecutor(),
                 new ImageCapture.OnImageSavedCallback() {
 
-
-
                     public void onCaptureSuccess(ImageProxy image, int rotationDegrees)
                     {
 
+                        Log.d("aaaa","on passe par onCaptureSuccess");
                         ImagePostData.getInstance().setBitMap(toBitmap((Image) image));
 
 
@@ -216,8 +215,18 @@ public class PicturePage extends AppCompatActivity implements ImageAnalysis.Anal
                     }
 
 
+
+
+
+
+
+
+
+
+
                     @Override
                     public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
+                        //ImagePostData.getInstance().setBitMap(toBitmap((Image) ImageCapture.));
                         Toast.makeText(PicturePage.this, "Pic saved at "+
                                 "Pictures/"+contentValues.get("_display_name").toString(),
                                 Toast.LENGTH_LONG).show();
