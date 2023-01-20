@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.singletons.ListOfPermissions;
@@ -62,7 +63,7 @@ public class HomePage extends AppCompatActivity {
             }
         }
 
-        Location.getInstance().setUp(this);
+        Location.getInstance().setUp(this,  new Thread(() -> searchFilters()));
         ListOfPublications.getInstance().setUp(this);
 
         this.filterLayout = (LinearLayout) findViewById(R.id.filterLayout);
@@ -70,7 +71,6 @@ public class HomePage extends AppCompatActivity {
         this.seekBar = (SeekBar) this.findViewById(R.id.seekBar);
         this.simpleList = (ListView) findViewById(R.id.homePageListView);
 
-        searchFilters();
         setUpButton();
         setUpSeekBar();
     }
@@ -169,12 +169,10 @@ public class HomePage extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) {}
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
     }
 
