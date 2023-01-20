@@ -5,24 +5,31 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.GridView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import java.util.ArrayList;
-
 import edu.atelier.technique.R;
-import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.models.PublicationModel;
 import edu.atelier.technique.singletons.ListOfPermissions;
 import edu.atelier.technique.singletons.ListOfPublications;
 import edu.atelier.technique.ui.Adapter.InterestPageAdapter;
 
+
+/**
+ * Cette activité permet de consulté les images des publications sauvegardés
+ */
 public class InterestPage extends AppCompatActivity {
+
+
     private static final int EXTERNAL_STORAGE = 3000;
     private GridView simpleList;
     private ArrayList<PublicationModel> publicationList = new ArrayList<PublicationModel>();
 
+
+    /**
+     * onCreate
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +59,12 @@ public class InterestPage extends AppCompatActivity {
         simpleList.setAdapter(myAdapter);
     }
 
+    /**
+     * onRequestPermissionsResult
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

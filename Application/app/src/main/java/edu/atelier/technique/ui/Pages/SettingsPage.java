@@ -1,20 +1,19 @@
 package edu.atelier.technique.ui.Pages;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
-
-import edu.atelier.technique.HomePage;
 import edu.atelier.technique.R;
 import edu.atelier.technique.singletons.ListOfPermissions;
 
+/**
+ * Cette activity permet à l'utilisateur de changé ses permissions
+ */
 public class SettingsPage extends AppCompatActivity {
+
 
     private static final int CAMERA_PERMISSION = 1000;
     private static final int LOCATION_PERMISSION = 2000;
@@ -24,6 +23,11 @@ public class SettingsPage extends AppCompatActivity {
     private SwitchCompat LocationSwitch;
     private SwitchCompat ExternalStorageSwitch;
 
+
+    /**
+     * onCreate
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +69,12 @@ public class SettingsPage extends AppCompatActivity {
         });
     }
 
+    /**
+     * onRequestPermissionsResult
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

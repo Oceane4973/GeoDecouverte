@@ -1,78 +1,85 @@
 package edu.atelier.technique.singletons;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.os.Environment;
 import android.util.Log;
-
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.NavigableMap;
-
 import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.models.PublicationModel;
-import edu.atelier.technique.notifications.Notifications;
 
-/** EXEMPLE D'APPEL :
- *  ListOfPublications.getInstance().writeToFile();
- *  ListOfPublications.getInstance().readFromFile();
- *  ListOfPublications.getInstance().publicationIsSaved(publicationModel);
+/**
+ * Cette classe permet de stocker toutes les données et les fonctions relatives au fichier JSON écrit et lu dans le stackage externe.
+ * Ce fichier contient nottament toutes les informations sur les [ ImageModel ]  enregistrées.
+ * Elle est sous forme de singleton par conséquent, nous vous donnons un exemple d'appel.
  *
  * NOTE :
- * Pensez à initisialiser le singleton dans la première activité avec : ListOfPublications.getInstance().setUp(this);
-*/
-
+ * Certaines données ne sont pas accéssible depuis cette classe.
+ * Pour son bon fonctionnement pensez donc à initisialiser le singleton dans la première activité avec : ListOfPublications.getInstance().setUp(this);
+ *
+ * EXEMPLE D'APPEL :
+ * ListOfPublications.getInstance().writeToFile();
+ * ListOfPublications.getInstance().readFromFile();
+ * ListOfPublications.getInstance().publicationIsSaved(publicationModel);
+ */
 public class ListOfPublications {
+
 
     private String FILE_NAME = "LIST_OF_PUBLICATIONS.json";
     private ArrayList<PublicationModel> list;
-
     private Context context;
-
     private static ListOfPublications INSTANCE;
 
+
+    /**
+     * récupère l'instance de ListOfPublications
+     * @return une instance existante ou une nouvelle
+     */
     public static ListOfPublications getInstance() {
         if (INSTANCE == null){ INSTANCE = new ListOfPublications();}
         return INSTANCE;
     }
 
+    /**
+     * permet l'initialisation de la variable LatLng
+     * @param context
+     */
     public void setUp(Context context){
         this.context = context;
         this.readFromFile();
         //this.writeToFile();
     }
 
-    private ListOfPublications(){
-        this.list = new ArrayList<PublicationModel>();
-    }
+    /**
+     * Constructeur
+     */
+    private ListOfPublications(){ this.list = new ArrayList<PublicationModel>();}
 
-    public Boolean addOrDeletePublication(PublicationModel publication){
-        if(publication.isFavoris()){
-            this.list.remove(publication);
-        }else{
-            this.list.add(publication);
-        }
+    /**
+     * Répercute une demande de modification de statut de sauvegarde par l'utilisateur sur le fichier JSON stocké
+     * @param publication
+     * @return boolean
+     */
+    public boolean addOrDeletePublication(PublicationModel publication){
+        if(publication.isFavoris()){ this.list.remove(publication);
+        }else{ this.list.add(publication); }
         writeToFile();
         return !publication.isFavoris();
     }
 
-    public Boolean publicationIsSaved(PublicationModel publicationModel){
+    /**
+     * récupère l'etat de sauvegarde d'une [ PublicationImage ]
+     * @param publicationModel
+     * @return boolean
+     */
+    public boolean publicationIsSaved(PublicationModel publicationModel){
         for(PublicationModel publication : this.list){
             if (publication.getImage().getId() == publicationModel.getImage().getId()){
                 return true;
@@ -81,10 +88,16 @@ public class ListOfPublications {
         return false;
     }
 
-    public ArrayList<PublicationModel> getList(){
-        return this.list;
-    }
+    /**
+     * récupère toute la liste des [ PublicationImage ] sauvegardés
+     * @return list
+     */
+    public ArrayList<PublicationModel> getList(){ return this.list; }
 
+    /**
+     * converti toute la liste des [ PublicationImage ] sauvegardés au format JSON
+     * @return JSONArray
+     */
     private JSONArray JSONList(){
         JSONArray json = new JSONArray();
         for(PublicationModel publication : this.list) {
@@ -93,6 +106,9 @@ public class ListOfPublications {
         return json;
     }
 
+    /**
+     * met à jour et écrit dans le fichier JSON
+     */
     public void writeToFile() {
         try {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE));
@@ -105,11 +121,12 @@ public class ListOfPublications {
         }
     }
 
+    /**
+     * lit le fichier JSON
+     */
     private void readFromFile() {
-
         this.list = new ArrayList<PublicationModel>();
         JSONArray publications = null;
-
         try {
             InputStream inputStream = context.openFileInput(FILE_NAME);
             if ( inputStream != null ) {

@@ -1,22 +1,25 @@
 package edu.atelier.technique.ui.Pages;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.graphics.Path;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.animation.PathInterpolator;
-
 import edu.atelier.technique.HomePage;
 import edu.atelier.technique.R;
 
+
+/**
+ * Cette activité représente la bootAnimation
+ */
 public class BootAnimation extends AppCompatActivity {
 
+    /**
+     * onCreate
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

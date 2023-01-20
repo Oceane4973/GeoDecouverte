@@ -3,60 +3,78 @@ package edu.atelier.technique.singletons;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import com.google.android.gms.maps.model.LatLng;
-
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
-import java.util.function.Function;
 
-import edu.atelier.technique.services.ImageAsyncService;
-
-/** EXEMPLE D'APPEL :
- Location.getInstance().getCurrentLocation();
-
- NOTE :
- Pensez à initisialiser le singleton dans la première activité avec : Location.getInstance().setUp(this);
+/**
+ * Cette classe permet de stocker toutes les données et les fonctions relatives à la récupération de la localisation de l'utilisateur
+ * Elle est sous forme de singleton par conséquent, nous vous donnons un exemple d'appel.
+ *
+ * NOTE :
+ * Certaines données ne sont pas accéssible depuis cette classe.
+ * Pour son bon fonctionnement pensez donc à initisialiser le singleton dans la première activité avec : Location.getInstance().setUp(Activity activity, Thread callBack);
+ *
+ * EXEMPLE D'APPEL :
+ *  Location.getInstance().getCurrentLocation();
  */
-
 public class Location {
+
 
     private LatLng latLng;
     private boolean isSetUp;
     private boolean gpsEnabled = false;
-
     private static Location INSTANCE;
 
+
+    /**
+     * récupère l'instance de Location
+     * @return une instance existante ou une nouvelle
+     */
     public static Location getInstance() {
         if (INSTANCE == null){ INSTANCE = new Location();}
         return INSTANCE;
     }
 
+    /**
+     * Constructeur
+     */
     private Location(){
         this.isSetUp = false;
     }
 
+    /**
+     * récupère la localisation current
+     * @return LatLng si la classe à été initialisé sinon null
+     */
     public LatLng getCurrentLocation(){
         if (! this.isSetUp) { return null; }
         return this.latLng;
     }
 
+    /**
+     * redirige l'utilisateur sur la page d'activation du GPS
+     * @param activity
+     */
     private void enableLocationSettings(Activity activity) {
         Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
         activity.startActivity(settingsIntent);
     }
 
+    /**
+     * vérifie que le GPS est activé
+     * @param activity
+     * @param callBack
+     */
     public void setUp(Activity activity, Thread callBack) {
         Context context = activity.getApplicationContext();
 
@@ -84,13 +102,15 @@ public class Location {
                 });
             };
             Executors.newSingleThreadExecutor().execute(runnable);
-        }
-
-        if(gpsEnabled) {
-            initCurrentLocation(locationManager, context, callBack);
-        }
+        } else { initCurrentLocation(locationManager, context, callBack); }
     }
 
+    /**
+     * initialise la variable LatLng
+     * @param locationManager
+     * @param context
+     * @param callBack
+     */
     private void initCurrentLocation(LocationManager locationManager, Context context, Thread callBack){
         List<String> providers = locationManager.getProviders(true);
         for (String provider : providers) {

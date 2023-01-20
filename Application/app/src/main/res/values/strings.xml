@@ -44,4 +44,6 @@
     <string name="subInListOfPublication">Publication supprimée de la liste des publications enregistrées</string>
     <string name="addInListOfPublication">Publication ajoutée à la liste des publications enregistrées</string>
     <string name="LocationNotFoundText">Impossible de récupérer votre localisation</string>
+    <string name="AddPublicationProblemTextTitle">Votre publication n\'a pas été publiée.</string>
+    <string name="AddPublicationProblemText">Malheureusement votre publication ne pourra pas être partagée car un problème est survenu. Réessayez utlérieurement.</string>
 </resources>

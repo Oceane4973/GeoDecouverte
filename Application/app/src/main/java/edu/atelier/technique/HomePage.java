@@ -3,7 +3,6 @@ package edu.atelier.technique;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,7 +12,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import edu.atelier.technique.models.ImageModel;
 import edu.atelier.technique.singletons.ListOfPermissions;
@@ -36,7 +34,12 @@ import edu.atelier.technique.useCase.GetImagesWithCityFiltersUseCase;
 import edu.atelier.technique.useCase.GetImagesWithCountryFiltersUseCase;
 import edu.atelier.technique.ui.Pages.SettingsPage;
 
+/**
+ * Cette activité est l'activité principal de l'application.
+ * Elle permet à l'utilisteur de voir les publications disponibles et de les filtres selon ces besoins
+ */
 public class HomePage extends AppCompatActivity {
+
 
     private static final int LOCATION_PERMISSION = 2000;
     private static final int EXTERNAL_STORAGE = 3000;
@@ -47,6 +50,11 @@ public class HomePage extends AppCompatActivity {
     private SeekBar seekBar;
     private int radius;
 
+
+    /**
+     * onCreate
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +83,10 @@ public class HomePage extends AppCompatActivity {
         setUpSeekBar();
     }
 
+    /**
+     * appel l'adapter [ HomePageAdapter ] pour visualiser les publications disponibles
+     * @param list
+     */
     private void loadAdapter(List<ImageModel> list) {
         publicationList = new ArrayList<PublicationModel>();
         for (ImageModel element : list) {
@@ -85,6 +97,9 @@ public class HomePage extends AppCompatActivity {
         simpleList.setAdapter(myAdapter);
     }
 
+    /**
+     * met à jour les données des publications visibles par rapport aux filtres
+     */
     private void searchFilters() {
         String textInput = ((TextView) this.findViewById(R.id.input_filters)).getText().toString();
         String choice = ((Spinner) this.findViewById(R.id.spinner)).getSelectedItem().toString();
@@ -127,6 +142,9 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
+    /**
+     * initialise le comportement des éléments dynamiques de la page
+     */
     private void setUpButton() {
         this.findViewById(R.id.imageButtonBookMark).setOnClickListener(click -> {
             startActivity(new Intent(getApplicationContext(), InterestPage.class));
@@ -160,6 +178,9 @@ public class HomePage extends AppCompatActivity {
         });
     }
 
+    /**
+     * initialise le comportement de la seekBar
+     */
     private void setUpSeekBar() {
         this.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -167,7 +188,6 @@ public class HomePage extends AppCompatActivity {
                 ((TextView) findViewById(R.id.km)).setText(progress + " km");
                 radius = Integer.parseInt(String.valueOf(progress));
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {}
 
@@ -176,6 +196,9 @@ public class HomePage extends AppCompatActivity {
         });
     }
 
+    /**
+     * initialise [ ListOfPermissions ]
+     */
     private void initiatePermissions() {
         ListOfPermissions.getInstance()
                 .setCameraPermission((ContextCompat.checkSelfPermission(this.getApplicationContext(),
@@ -192,6 +215,12 @@ public class HomePage extends AppCompatActivity {
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED));
     }
 
+    /**
+     * onRequestPermissionsResult
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -221,6 +250,9 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
+    /**
+     * Modifie la visibilité du filtre
+     */
     private void setFiltersVisibility() {
         if (filterLayout.getVisibility() == View.VISIBLE) {
             filterLayout.setVisibility(View.GONE);
