@@ -3,8 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_home_page.xml" value="0.20380434782608695" />
+        <entry key="..\:/Documents/DuelGame/Atelier_technique/Application/app/src/main/res/layout/activity_picpic.xml" value="0.2" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3095" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/appareil_photo_icon.xml" value="0.2535" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.186" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3175" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_baseline_bookmark_24.xml" value="0.186" />
@@ -13,6 +14,9 @@
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_bookmark_big.xml" value="0.2695" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_bookmark_fill.xml" value="0.2825" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_bookmark_outline.xml" value="0.349" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_camera.xml" value="0.2535" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_check.xml" value="0.2535" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_cross.xml" value="0.2535" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_empty_camera.xml" value="0.349" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_full_bookmark.xml" value="0.349" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_full_camera.xml" value="0.349" />
@@ -26,15 +30,27 @@
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/ic_noun_gps_location_5392125.xml" value="0.311" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/informations_icon.xml" value="0.186" />
         <entry key="./Atelier_technique/Application/app/src/main/res/drawable/marque_page_icon.xml" value="0.176" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/path_boot_animation.xml" value="0.196" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/selector_button_no.xml" value="0.259" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/selector_button_yes.xml" value="0.316" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/shape_button_NO.xml" value="0.316" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/shape_button_YES.xml" value="0.316" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/shape_button_no.xml" value="0.316" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/drawable/shape_publication_container.xml" value="0.316" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_add_publication.xml" value="0.20380434782608695" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_boot_animation.xml" value="0.20380434782608695" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_info_page.xml" value="0.33" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_main.xml" value="0.2871376811594203" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_picpic.xml" value="0.33" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_picpic_TEST_NE_PAS_UTILISER_POUR_DE_VRAI.xml" value="0.3220108695652174" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/layout/activity_validate_pic.xml" value="0.25" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/component_grid_item.xml" value="0.26458333333333334" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/component_post.xml" value="0.26458333333333334" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/component_post_add.xml" value="0.20380434782608695" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/component_post_vie.xml" value="0.26458333333333334" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/component_post_view.xml" value="0.33" />
+        <entry key="./Atelier_technique/Application/app/src/main/res/layout/home_page_layout.xml" value="0.5" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/picpic.xml" value="0.25" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/post.xml" value="0.25" />
         <entry key="./Atelier_technique/Application/app/src/main/res/layout/saved.xml" value="0.3351851851851852" />

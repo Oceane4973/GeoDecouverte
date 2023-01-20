@@ -28,8 +28,6 @@ public class AddPublicationPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_publication);
 
-        getSupportActionBar().hide();
-
         this.findViewById(R.id.back).setOnClickListener(click -> {
             super.onBackPressed();
         });

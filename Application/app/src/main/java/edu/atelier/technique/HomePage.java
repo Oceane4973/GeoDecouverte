@@ -27,7 +27,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import edu.atelier.technique.ui.Pages.InfoPage;
 import edu.atelier.technique.ui.Pages.InterestPage;
-import edu.atelier.technique.ui.Pages.Picpic_activity;
+import edu.atelier.technique.ui.Pages.PicturePage;
 import edu.atelier.technique.useCase.GetAllImagesUseCase;
 import edu.atelier.technique.useCase.GetAllImagesWithRadiusUseCase;
 import edu.atelier.technique.useCase.GetImagesWithCityFiltersUseCase;
@@ -174,7 +174,7 @@ public class HomePage extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), InfoPage.class));
         });
         this.findViewById(R.id.imageButtonAddPublication).setOnClickListener(click -> {
-            startActivity(new Intent(getApplicationContext(), Picpic_activity.class));
+            startActivity(new Intent(getApplicationContext(), PicturePage.class));
         });
     }
 

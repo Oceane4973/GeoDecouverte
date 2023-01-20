@@ -59,9 +59,14 @@
             android:label="AddPublicationPage">
         </activity>
         <activity
-            android:name=".ui.Pages.Picpic_activity"
+            android:name=".ui.Pages.PicturePage"
             android:exported="true"
-            android:label="Picpic_activity">
+            android:label="PicturePage">
+        </activity>
+        <activity
+            android:name=".ui.Pages.ValidatePicPage"
+            android:exported="true"
+            android:label="ValidatePicPage">
         </activity>
         <activity
             android:name=".ui.Pages.SettingsPage"
