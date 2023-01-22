@@ -13,3 +13,7 @@
 ## Lien vers le GitHub de l'API Rest
 
 [API_Atelier_Technique](https://github.com/ValentinMontel/API2_Atelier_technique.git)
+
+## Lien vers la diapositive
+
+[Diapositive](https://www.canva.com/design/DAFYZB93GmE/Phh35GbBmTb20uVK-bYYjg/edit?utm_content=DAFYZB93GmE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
