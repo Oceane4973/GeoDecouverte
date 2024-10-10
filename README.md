@@ -1,4 +1,4 @@
-# GéoDécouverte : Atelier Tehcnique
+# GéoDécouverte : Atelier Technique
 
 ## Description
 **GéoDécouverte** est une application mobile développée dans le cadre du cours _Atelier technique_ dans la licence professionnelle LP DL - DAM (Développement d'Application Mobile) à l'IUT Sophia Antipolis. Cette application permet aux utilisateurs de découvrir des lieux grâce à une carte interactive, tout en leur offrant la possibilité de filtrer les résultats par ville, pays, ou rayon autour de leur position géographique actuelle.
