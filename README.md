@@ -36,7 +36,7 @@ Lors du développement de l'application **GéoDécouverte**, plusieurs contraint
 
 ## Lien vers l'API
 Le projet utilise une API Rest hébergée sur Vercel. Vous pouvez accéder au dépôt de l'API ici :  
-[https://github.com/Oceane4973/API_atelier_technique](https://github.com/Oceane4973/API_atelier_technique)
+[https://github.com/Oceane4973/API-GeoDecouverte](https://github.com/Oceane4973/API-GeoDecouverte)
 
 ## Gestion de projet
 Le projet a été planifié et géré via un fichier Google Sheets, incluant la répartition des tâches, la couverture des tâches, ainsi que le chiffrage. Vous pouvez consulter ces informations via le lien suivant :  
